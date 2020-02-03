@@ -4,8 +4,8 @@ import axios from 'axios';
 export const JPSignUp = props => {
 
     const initialInfo = {
-        name: '',
         company: '',
+        location: '',
         email: '',
         password: ''
     }
@@ -38,12 +38,12 @@ export const JPSignUp = props => {
                 <h3>Recruiter Details</h3>
                 <form>
                     <label>
-                        Name:  
-                        <input type='text' name='name' value={info.name} onChange={(evt) => handleChange(evt)} />
-                    </label>
-                    <label>
                         Company:  
                         <input type='text' name='company' value={info.company} onChange={(evt) => handleChange(evt)} />
+                    </label>
+                    <label>
+                        Location:  
+                        <input type='text' name='location' value={info.location} onChange={(evt) => handleChange(evt)} />
                     </label>
                     <br />
                     <label>
