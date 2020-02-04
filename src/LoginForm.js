@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import cogoToast from "cogo-toast";
 import "./loginForm.css";
+import Switch from '@material-ui/core/Switch';
 
 const { hide } = cogoToast.success('Success. ', {
   onClick: () => {
