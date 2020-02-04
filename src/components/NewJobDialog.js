@@ -11,7 +11,7 @@ import SkillsDialog from './SkillsDialog';
 
 import { JobType } from './JobType';
 
-import './NewJobDialog.css';
+// import './NewJobDialog.css';
 
 export default function NewJobDialog() {
   const [open, setOpen] = React.useState(false);

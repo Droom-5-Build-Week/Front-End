@@ -8,6 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import SkillsList from './SkillsList';
+import './SkillsDialog.css'
 
 export default function SkillsDialog(props) {
   const [open, setOpen] = React.useState(false);

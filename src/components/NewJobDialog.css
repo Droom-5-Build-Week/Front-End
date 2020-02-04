@@ -1,8 +1,8 @@
-.MuiDialogTitle-root h2 {
+.dialog-container.MuiDialogTitle-root h2 {
     text-align: center;
 }
 
-.MuiDialogContent-root {
+.dialog-container.MuiDialogContent-root {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -14,27 +14,27 @@
     /* margin-left: 12%; */
 }
 
-.MuiDialogContent-root div {
+.dialog-container.MuiDialogContent-root div {
     display: flex;
     flex-direction: column;
     width: 100%;
     /* border: 2px red solid; */
 }
 
-.MuiInputBase-root {
+.dialog-container.MuiInputBase-root {
     width: 60%;
 }
 
-.MuiDialogContent-root div button {
+.dialog-container.MuiDialogContent-root div button {
     width: 60%;
     margin: 0 auto;
 }
 
-.MuiDialogContent-root p{
+.dialog-container.MuiDialogContent-root p{
     margin: 0 auto;
 }
 
-.MuiPaper-root {
+.dialog-container.MuiPaper-root {
     border: 2px black solid;
     border-radius: 20px;
 
