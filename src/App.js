@@ -2,23 +2,35 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import NewJobDialog from './components/NewJobDialog';
+
 function App() {
+
+  const modalStyles = {
+    content: {
+      maxWidth: "500px",
+      paddingBottom: "25px",
+
+      margin: "0 auto",
+      verticalAlign: "middle",
+
+      marginTop: '50px'
+    }
+  }
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewJobDialog />
     </div>
   );
 }
