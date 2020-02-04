@@ -1,9 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import PastJobForm from './PastJobForm'
-
 import NewJobDialog from './components/NewJobDialog';
+import PrevJobDialog from './components/PreviousJobDialog';
 
 function App() {
 
@@ -32,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <NewJobDialog />
+      <PrevJobDialog />
     </div>
   );
 }
