@@ -1,0 +1,42 @@
+.MuiDialogTitle-root h2 {
+    text-align: center;
+}
+
+.MuiDialogContent-root {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    
+    /* border: 2px red solid; */
+
+    margin: 0 auto;
+    /* margin-left: 12%; */
+}
+
+.MuiDialogContent-root div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* border: 2px red solid; */
+}
+
+.MuiInputBase-root {
+    width: 60%;
+}
+
+.MuiDialogContent-root div button {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.MuiDialogContent-root p{
+    margin: 0 auto;
+}
+
+.MuiPaper-root {
+    border: 2px black solid;
+    border-radius: 20px;
+
+    border-collapse: separate; 
+}
