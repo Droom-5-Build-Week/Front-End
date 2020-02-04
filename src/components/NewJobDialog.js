@@ -51,7 +51,7 @@ export default function NewJobDialog() {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+        Post a new Job
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth='false' maxWidth='md'>
         <DialogTitle id="form-dialog-title">Create a New Job</DialogTitle>
