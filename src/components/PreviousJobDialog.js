@@ -20,14 +20,13 @@ export default function PrevJobDialog() {
     company: '',
     salary: '',
     position: '',
-    type: '', //populated by job type dialog
+    type: '', //populated by jobtype props.setType
     date: '',
-    duration: '', 
-    skills: '', //populated by skills dialog prop
+    duration: '',
+    skills: '', //populated by skillsdialog props.setSkills
     description: ''
   }
 
-  
   const [prevJobs, setPrevJobs] = React.useState(initialPrevJob)
 
   const handleClickOpen = () => {
