@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.jp-popup {
+  /* min-width: 450px; */
+  max-width: 500px;
+  padding-bottom: 25px;
+
+  margin: 0 auto;
+  vertical-align: middle;
+
+  margin-top: 50px;
+}
+
+h2, h3 {
+  color: #a6a6a6;
+}
+
+.MuiDialogContent-root {
+  display: flex;
+  flex-direction: column;
+}
