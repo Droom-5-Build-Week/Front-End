@@ -39,7 +39,7 @@ export const JPNewJob = props => {
     }
 
     return (
-        <Card raised='true' variant='outlined'  className='jp-popup'>
+        <div>
             <h2>Post a Job</h2>
             <div>
                 <h3>Job Details</h3>
@@ -64,6 +64,6 @@ export const JPNewJob = props => {
                 <br />
             </div>
             <Button variant='outlined' className='jp-new-job-button' onClick={ handleSubmit } >Post</Button>
-        </Card>
+        </div>
     )
 }
