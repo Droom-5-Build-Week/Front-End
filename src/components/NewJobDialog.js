@@ -9,19 +9,43 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import SkillsDialog from './SkillsDialog';
 
+import { JobType } from './JobType';
+
 export default function NewJobDialog() {
   const [open, setOpen] = React.useState(false);
+
+  const [skills, setSkills] = React.useState({value: ''});
+
+  const initialJobInfo = {
+    position: '',
+    type: '',
+    duration: '', 
+    skills: '',
+    description: ''
+  }
+
+  const [jobInfo, setJobInfo] = React.useState(initialJobInfo)
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose = (flag) => {
+    if(flag) {
+      console.log('data to add', jobInfo);
+      setJobInfo(initialJobInfo);
+      setOpen(false);
+    } else {
+      setJobInfo(initialJobInfo);
+      setOpen(false);
+    }
   };
 
   const handleChange = evt => {
-
+    setJobInfo({
+      ...jobInfo,
+      [evt.target.name]: evt.target.value
+    })
   }
 
   return (
@@ -41,47 +65,52 @@ export default function NewJobDialog() {
                 label='Position' 
                 type='text' 
                 name='position'
-                // value={info.position} 
+                value={jobInfo.position} 
                 onChange={(evt) => handleChange(evt)} />
 
-            <TextField 
+            {/* <TextField 
                 label='Type' 
                 type='text' 
                 name='type' 
-                // value={info.type} 
+                value={jobInfo.type} 
                 onChange={(evt) => handleChange(evt)} />
 
             <TextField 
                 label='Duration' 
                 type='text' 
                 name='duration' 
-                // value={info.duration} 
-                onChange={(evt) => handleChange(evt)} />
+                value={jobInfo.duration} 
+                onChange={(evt) => handleChange(evt)} /> */}
 
+              <JobType setType={ (type) => setJobInfo( { ...jobInfo, type: type})} setDuration={ duration => setJobInfo({ ...jobInfo, duration: duration}) }/>
+
+            <br />
             < br/>
 
-            <SkillsDialog />
+            <SkillsDialog setSkills={ (obj) => setJobInfo({...jobInfo, skills: obj.value}) }/>
 
+            <br />
             <TextField
                 label='Skills'
-                disabled={true} />
+                disabled={true}
+                value={jobInfo.skills} />
 
             <TextField 
                 label='Description' 
                 type='text' 
                 name='description' 
-                // value={info.description} 
+                value={jobInfo.description} 
                 multiline={true}
                 rowsMax='4'
                 onChange={(evt) => handleChange(evt)} />
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={() => handleClose(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+          <Button onClick={() => handleClose(true)} color="primary">
+            Post
           </Button>
         </DialogActions>
       </Dialog>

@@ -19,43 +19,55 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SkillsList() {
+export default function SkillsList(props) {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
-
-  const initialSkills = [
-      'Web Development',
-      'Backend Development',
-      'React'
-  ]
-
-  const [skills, setSkills] = React.useState(initialSkills);
+  const [checked, setChecked] = React.useState([-1]);
+  const [skillDisplay, setSkillDisplay] = React.useState(props.initialSkills)
   const [newSkill, setNewSkill] = React.useState({value: ''})
 
   const handleAddNewSkill = evt => {
       evt.preventDefault();
+      console.log('adding new skill', newSkill.value);
+      const newSkillDisplay = [...skillDisplay];
+      newSkillDisplay.push(newSkill.value);
+      setSkillDisplay(newSkillDisplay);
 
-      skills.push(newSkill.value);
+      console.log('after adding', skillDisplay);
 
       setNewSkill({value: ''});
   }
 
   const handleToggle = value => () => {
+    // get index of current skill
     const currentIndex = checked.indexOf(value);
+    // copy array
     const newChecked = [...checked];
 
+    // if we dont have the skill as checked
     if (currentIndex === -1) {
+      // set it to checked
       newChecked.push(value);
     } else {
+      // or get it out of the array of checked items
       newChecked.splice(currentIndex, 1);
     }
-
+    // set the new checked items
     setChecked(newChecked);
+    // iterate through new checked items and add to array
+    const checkedSkills = [];
+    newChecked.forEach( index => {
+      if(skillDisplay[index] !== undefined) {
+        checkedSkills.push(skillDisplay[index]);
+      }
+    })
+    // set new array of skills from parent state setter
+    console.log('setting skills in skillDialog', checkedSkills);
+    props.setSkills(checkedSkills);
   };
 
   return (
     <List className={classes.root}>
-      {skills.map( (value, i) => {
+      {skillDisplay.map( (value, i) => {
         const labelId = `checkbox-list-label-${i}`;
 
         return (
@@ -78,7 +90,7 @@ export default function SkillsList() {
           </ListItem>
         );
       })}
-      <ListItem key={skills.length} role={undefined} dense button onClick={handleToggle(skills.length)}>
+      <ListItem key={skillDisplay.length} role={undefined} dense button onClick={handleToggle(skillDisplay.length)}>
           {/* <ListItemIcon>
               <Checkbox
                 edge='start'

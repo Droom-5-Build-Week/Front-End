@@ -9,17 +9,32 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import SkillsList from './SkillsList';
 
-export default function SkillsDialog() {
+export default function SkillsDialog(props) {
   const [open, setOpen] = React.useState(false);
 
-//   const [skillsOpen, setSkillsOpen]
+  const initialSkills = [
+    'Web Development',
+    'Backend Development',
+    'React'
+]
+
+  const [skills, setSkills] = React.useState([]);
 
   const handleClickOpen = () => {
+    //axios
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose = (flag) => {
+    if(flag) {
+      // add skills
+      console.log('skillsDialog skills:', skills);
+      props.setSkills({value: skills.join(',')});
+      setOpen(false);
+    } else {
+      // just close
+      setOpen(false);
+    }
   };
 
   return (
@@ -34,14 +49,14 @@ export default function SkillsDialog() {
             Choose skills from list or add a new one:
           </DialogContentText> */}
 
-            <SkillsList />
+            <SkillsList setSkills={(arr) => setSkills(arr)} initialSkills={initialSkills}/>
             
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={() => handleClose(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={() => handleClose(true)} color="primary">
             Add
           </Button>
         </DialogActions>
