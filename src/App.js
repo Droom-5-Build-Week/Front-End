@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
+import cogoToast from "cogo-toast";
 import "./loginForm.css";
+
+const { hide } = cogoToast.success('Success. ', {
+  onClick: () => {
+    hide();
+  }
+})
+
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [Login, setLogin] = useState({
+    Seeker: true,
+    Provider: true
+  })
 
   function validationForm() {
     return email.length > 0 && password > 0;
@@ -40,7 +53,7 @@ export default function LoginForm() {
             onChange={e => setPassword(e.target.value)}
           />
         </FormGroup>
-        <Button disable={`${!validationForm()}`} type="submit">
+        <Button  disable={`${!validationForm()}`} type="submit">
           Login
         </Button>
       </form>
