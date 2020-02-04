@@ -1,62 +1,42 @@
-import React, { useState } from "react";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
-import cogoToast from "cogo-toast";
-import "./loginForm.css";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const { hide } = cogoToast.success('Success. ', {
-  onClick: () => {
-    hide();
-  }
-})
+import NewJobDialog from './components/NewJobDialog';
+import {JPSignUp} from './components/JPSignUp';
 
+function App() {
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const modalStyles = {
+    content: {
+      maxWidth: "500px",
+      paddingBottom: "25px",
 
-  const [Login, setLogin] = useState({
-    Seeker: true,
-    Provider: true
-  })
+      margin: "0 auto",
+      verticalAlign: "middle",
 
-  function validationForm() {
-    return email.length > 0 && password > 0;
+      marginTop: '50px'
+    }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
 
   return (
-    <div className="LoginForm">
-      <h1> Welcome to Droom </h1>
-
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email">
-          <label> Email </label>
-          <br />
-          <FormControl
-            autoFocus
-            type="email"
-            autoComplete="new-email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="password">
-          <label> Password </label>
-          <br />
-          <FormControl
-            type="password"
-            autoComplete="new-password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        <Button  disable={`${!validationForm()}`} type="submit">
-          Login
-        </Button>
-      </form>
+    <div className="App">
+      <NewJobDialog />
+      <br />
+      <br />
+      <JPSignUp />
     </div>
   );
 }
+
+export default App;
