@@ -38,33 +38,48 @@ export const JPSignUp = props => {
     }
 
     return (
-        <Card raised='true' variant='outlined' className='jp-popup'>
+        <div className='jp-sign-up'>
             <h2>Job Provider: Sign Up</h2>
             <div className='jp-sign-up-form'>
                 <h3>Recruiter Details</h3>
                 <form>
-                    <div>
-                        {/* <span>Company:</span>   */}
-                        <TextField label='Company' type='text' name='company' value={info.company} onChange={(evt) => handleChange(evt)} />
-                    </div>
-                    <div>
-                        {/* <span>Location:</span>   */}
-                        <TextField label='Location' type='text' name='location' value={info.location} onChange={(evt) => handleChange(evt)} />
-                    </div>
+
+                    <TextField 
+                        label='Company'
+                        type='text' 
+                        name='company' 
+                        value={info.company} 
+                        onChange={(evt) => handleChange(evt)} />
+                
+                    <TextField 
+                        label='Location' 
+                        type='text' 
+                        name='location' 
+                        value={info.location} 
+                        onChange={(evt) => handleChange(evt)} />
+                
                     <br />
-                    <div>
-                        {/* <span>Email:</span>   */}
-                        <TextField label='Email' type='text' name='email' value={info.email} onChange={(evt) => handleChange(evt)} />
-                    </div>
-                    <div>
-                        {/* <span>Password:</span>   */}
-                        <TextField label='Password' type='password' name='password' value={info.password} onChange={(evt) => handleChange(evt)} />
-                    </div>
+                  
+                    <TextField 
+                        label='Email' 
+                        type='text' 
+                        name='email' 
+                        value={info.email} 
+                        onChange={(evt) => handleChange(evt)} />
+        
+        
+                    <TextField 
+                        label='Password' 
+                        type='password' 
+                        name='password' 
+                        value={info.password} 
+                        onChange={(evt) => handleChange(evt)} />
+
                 </form>
             </div>
             <br />
             <Button variant='outlined' className='jp-sign-up-button' onClick={ handleSubmit }>Sign Up</Button>
-            <br />
-        </Card>
+            {/* <br /> */}
+        </div>
     )
 }

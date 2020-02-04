@@ -68,28 +68,15 @@ export default function NewJobDialog() {
                 value={jobInfo.position} 
                 onChange={(evt) => handleChange(evt)} />
 
-            {/* <TextField 
-                label='Type' 
-                type='text' 
-                name='type' 
-                value={jobInfo.type} 
-                onChange={(evt) => handleChange(evt)} />
-
-            <TextField 
-                label='Duration' 
-                type='text' 
-                name='duration' 
-                value={jobInfo.duration} 
-                onChange={(evt) => handleChange(evt)} /> */}
-
-              <JobType setType={ (type) => setJobInfo( { ...jobInfo, type: type})} setDuration={ duration => setJobInfo({ ...jobInfo, duration: duration}) }/>
+            <JobType setType={ (type) => setJobInfo( { ...jobInfo, type: type})} setDuration={ duration => setJobInfo({ ...jobInfo, duration: duration}) }/>
 
             <br />
-            < br/>
+            <br />
 
             <SkillsDialog setSkills={ (obj) => setJobInfo({...jobInfo, skills: obj.value}) }/>
 
             <br />
+            
             <TextField
                 label='Skills'
                 disabled={true}

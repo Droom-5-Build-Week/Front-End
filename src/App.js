@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import NewJobDialog from './components/NewJobDialog';
+import {JPSignUp} from './components/JPSignUp';
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
   return (
     <div className="App">
       <NewJobDialog />
+      <br />
+      <br />
+      <JPSignUp />
     </div>
   );
 }
