@@ -1,48 +1,47 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./loginForm.css";
+=======
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+>>>>>>> cc44a58b59be96696284c197d6ace5c819a94e74
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import NewJobDialog from './components/NewJobDialog';
+import {JPSignUp} from './components/JPSignUp';
 
-  function validationForm() {
-    return email.length > 0 && password > 0;
+function App() {
+
+  const modalStyles = {
+    content: {
+      maxWidth: "500px",
+      paddingBottom: "25px",
+
+      margin: "0 auto",
+      verticalAlign: "middle",
+
+      marginTop: '50px'
+    }
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
 
   return (
-    <div className="LoginForm">
-      <h1> Welcome to Droom </h1>
-
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId="email">
-          <label> Email </label>
-          <br />
-          <FormControl
-            autoFocus
-            type="email"
-            autoComplete="new-email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup controlId="password">
-          <label> Password </label>
-          <br />
-          <FormControl
-            type="password"
-            autoComplete="new-password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        <Button disable={`${!validationForm()}`} type="submit">
-          Login
-        </Button>
-      </form>
+    <div className="App">
+      <NewJobDialog />
+      <br />
+      <br />
+      <JPSignUp />
     </div>
   );
 }
+
+export default App;
