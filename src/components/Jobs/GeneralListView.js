@@ -15,14 +15,14 @@ export const GeneralListView = props => {
             return (
                 <div className='list-header-and-button'>
                     <h2>Skills:</h2>
-                    <SkillsDialog setSkills={(items) => setListItems(items)}/>
+                    <ListDialog setList={(items) => setListItems(items)} buttonText="Add Skills" title='Add Skills' />
                 </div>
             )
         } else if(props.type === 'interests') {
             return (
                 <div className = 'list-header-and-button'>
                     <h2>Interests:</h2>
-                    <SkillsDialog setSkills={(items) => setListItems(items)} />
+                    <ListDialog setList={(items) => setListItems(items)} buttonText="Add Interests" title='Add Interests' />
                 </div>
             )
         }
