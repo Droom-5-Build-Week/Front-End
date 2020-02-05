@@ -9,13 +9,7 @@ const JobSeekerOnboarding = (props) =>{
 
   const handleSumit = e => {
     e.preventDefault();
-    userInfoR.name = userInfo.name;
-    userInfoR.email = userInfo.email;
-    userInfoR.location = userInfo.location;
-    userInfoR.password = userInfo.password;
-    localStorage.setItem('userIntrests', userInfo.professionalIntrests);
-    localStorage.setItem('userSkills', userInfo.personalSkills);
-    axios.post('https://droom-bt-tl.herokuapp.com/api/auth/register', userInfoR)
+    axios.post('https://droom-bt-tl.herokuapp.com/api/auth/register', userInfo)
       .then( resp => {
         console.log(resp);
         // registered account correctly
@@ -46,13 +40,6 @@ const JobSeekerOnboarding = (props) =>{
     password: '',
     professionalIntrests: '',
     personalSkills:'',
-  }
-
-  const initialUserInfoR = {
-    name:'',
-    email:'',
-    location: '',
-    password: '',
   }
 
 
