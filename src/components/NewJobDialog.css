@@ -1,0 +1,42 @@
+.job-dialog-container.MuiDialogTitle-root h2 {
+    text-align: center;
+}
+
+.job-dialog-container.MuiDialogContent-root {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    
+    /* border: 2px red solid; */
+
+    margin: 0 auto;
+    /* margin-left: 12%; */
+}
+
+.job-dialog-container.MuiDialogContent-root div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* border: 2px red solid; */
+}
+
+.job-dialog-container.MuiInputBase-root {
+    width: 60%;
+}
+
+.job-dialog-container.MuiDialogContent-root div button {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.job-dialog-container.MuiDialogContent-root p{
+    margin: 0 auto;
+}
+
+.job-dialog-container.MuiPaper-root {
+    border: 2px black solid;
+    border-radius: 20px;
+
+    border-collapse: separate; 
+}
