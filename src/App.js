@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import NewJobDialog from './components/NewJobDialog';
 import PrevJobDialog from './components/PreviousJobDialog';
+import LoginForm from './components/LoginForm'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
     <div className="App">
       <NewJobDialog />
       <PrevJobDialog />
+      <LoginForm />
     </div>
   );
 }
