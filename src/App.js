@@ -2,7 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import NewJobDialog from './components/NewJobDialog';
+//import NewJobDialog from './components/NewJobDialog';
+import JobSeekerOnboarding from './Components/JobSeekerOnboarding';
 
 function App() {
 
@@ -30,7 +31,8 @@ function App() {
 
   return (
     <div className="App">
-      <NewJobDialog />
+      {/* <NewJobDialog /> */}
+      <JobSeekerOnboarding />
     </div>
   );
 }

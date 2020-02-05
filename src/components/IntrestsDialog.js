@@ -7,18 +7,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import SkillsList from './SkillsList';
+import IntrestsList from './IntrestsList';
 
-export default function SkillsDialog(props) {
+export default function IntrestsDialog(props) {
   const [open, setOpen] = React.useState(false);
 
-  const initialSkills = [
+  const initialIntrests = [
     'Web Development',
     'Backend Development',
     'React'
 ]
 
-  const [skills, setSkills] = React.useState([]);
+  const [intrests, setIntrests] = React.useState([]);
 
   const handleClickOpen = () => {
     //axios
@@ -27,9 +27,9 @@ export default function SkillsDialog(props) {
 
   const handleClose = (flag) => {
     if(flag) {
-      // add skills
-      console.log('skillsDialog skills:', skills);
-      props.setSkills({value: skills.join(',')});
+      // add intrests
+      console.log('Intrests Dialog :', intrests);
+      props.setIntrests({value: intrests.join(',')});
       setOpen(false);
     } else {
       // just close
@@ -40,16 +40,16 @@ export default function SkillsDialog(props) {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Skills
+        Add Intrests
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={false} maxWidth='sm'>
-        <DialogTitle id="form-dialog-title">Select Skills</DialogTitle>
+        <DialogTitle id="form-dialog-title">Select Intrests</DialogTitle>
         <DialogContent>
           {/* <DialogContentText>
             Choose skills from list or add a new one:
           </DialogContentText> */}
 
-            <SkillsList setSkills={(arr) => setSkills(arr)} initialSkills={initialSkills}/>
+            <IntrestsList setIntrests={(arr) => setIntrests(arr)} initialIntrests={initialIntrests}/>
             
         </DialogContent>
         <DialogActions>
