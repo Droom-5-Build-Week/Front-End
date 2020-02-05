@@ -12,35 +12,31 @@ export const JPSignUp = props => {
 
     const [toggle, setToggle] = React.useState(false);
 
-    React.useEffect( () => {
-        console.log('running effect');
-        // console.log(resp);
-        const obj = {
-            email: 'hudson1@email.com',
-            password: 'password'
-        }
-        axios.post('https://droom-bt-tl.herokuapp.com/api/auth/company/login', obj )
-        .then( resp => {
-            console.log(resp);
-            localStorage.setItem('token', resp.data.token);
-            setToggle(!toggle);
-        })
-        .catch( err => {
-            console.log(err);
-        })
-    }, [])
+    // React.useEffect( () => {
+    //     console.log('running effect');
+    //     // console.log(resp);
+    //     axios.post('https://droom-bt-tl.herokuapp.com/api/auth/company/register', obj )
+    //     .then( resp => {
+    //         console.log(resp);
+    //         localStorage.setItem('token', resp.data.token);
+    //         props.history.push('/');
+    //     })
+    //     .catch( err => {
+    //         console.log(err);
+    //     })
+    // }, [])
 
-    React.useEffect( () => {
-        console.log('getting users');
+    // React.useEffect( () => {
+    //     console.log('getting users');
 
-        const obj = { 
-            "name": "FTP",
-          }
-        axiosWithAuth().get('https://droom-bt-tl.herokuapp.com/api/companies/2/jobs/skills')
-        .then( resp => {
-            console.log(resp);
-        })
-    }, [toggle]);
+    //     const obj = { 
+    //         "name": "FTP",
+    //       }
+    //     axiosWithAuth().get('https://droom-bt-tl.herokuapp.com/api/companies/2/jobs/skills')
+    //     .then( resp => {
+    //         console.log(resp);
+    //     })
+    // }, [toggle]);
 
     const initialInfo = {
         name: '',
@@ -67,8 +63,8 @@ export const JPSignUp = props => {
         axios.post('https://droom-bt-tl.herokuapp.com/api/auth/company/register', info)
         .then( resp => {
             //if we are here then we have registered the user
-            // props.history.push('/login');
             setToggle(true);
+            props.history.push('/');
         })
         .catch( err => {
             //TODO do cogo-toast for invalid entry or whatever

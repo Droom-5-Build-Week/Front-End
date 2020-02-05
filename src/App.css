@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.register-account {
+  text-decoration: underline;
+}
+
+.register-account:hover {
+  color: #c4c4c4;
+}
