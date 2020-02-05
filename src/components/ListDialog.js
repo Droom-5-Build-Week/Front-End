@@ -12,13 +12,13 @@ import GeneralList from './GeneralList';
 export default function ListDialog(props) {
   const [open, setOpen] = React.useState(false);
 
-  const intialList = [
+  const initialList = [
     'Item 1',
     'Item 2',
     'Item 3'
   ] 
 
-  const [list, setList] = React.useState(intialList);
+  const [list, setList] = React.useState(initialList);
 
   const handleClickOpen = () => {
     //axios
@@ -28,7 +28,7 @@ export default function ListDialog(props) {
   const handleClose = (flag) => {
     if(flag) {
       // add skills
-      console.log('skillsDialog skills:', skills);
+      console.log('skillsDialog skills:', list);
       props.setList({value: list.join(',')});
       setOpen(false);
     } else {

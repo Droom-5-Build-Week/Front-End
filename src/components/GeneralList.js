@@ -78,7 +78,7 @@ export default function GeneralList(props) {
       <ListItem key={listDisplay.length} role={undefined} dense button onClick={handleToggle(listDisplay.length)}>
             <TextField
               label='Custom'
-              value={newSkill.value}
+              value={newListItem.value}
               onChange={ evt => setNewListItem({value: evt.target.value})} />
             <Button
                 variant='outlined'

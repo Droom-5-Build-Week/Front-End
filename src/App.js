@@ -6,7 +6,7 @@ import { Dashboard } from './components/dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
-      <Dashboard userType='provider' />
+      <Dashboard userType='seeker' />
     </div>
   );
 }

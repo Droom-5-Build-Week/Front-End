@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillsDialog from '../SkillsDialog';
+import ListDialog from '../ListDialog';
 import { GeneralList } from './GeneralList';
 
 import './Jobs.css';
