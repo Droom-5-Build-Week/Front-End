@@ -7,7 +7,7 @@
 }
 
 .slide-menu-container {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     float: left;
     display: flex;
     flex-direction: row-reverse;

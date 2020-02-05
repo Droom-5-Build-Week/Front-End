@@ -1,8 +1,8 @@
-.dialog-container.MuiDialogTitle-root h2 {
+.job-dialog-container.MuiDialogTitle-root h2 {
     text-align: center;
 }
 
-.dialog-container.MuiDialogContent-root {
+.job-dialog-container.MuiDialogContent-root {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -14,27 +14,27 @@
     /* margin-left: 12%; */
 }
 
-.dialog-container.MuiDialogContent-root div {
+.job-dialog-container.MuiDialogContent-root div {
     display: flex;
     flex-direction: column;
     width: 100%;
     /* border: 2px red solid; */
 }
 
-.dialog-container.MuiInputBase-root {
+.job-dialog-container.MuiInputBase-root {
     width: 60%;
 }
 
-.dialog-container.MuiDialogContent-root div button {
+.job-dialog-container.MuiDialogContent-root div button {
     width: 60%;
     margin: 0 auto;
 }
 
-.dialog-container.MuiDialogContent-root p{
+.job-dialog-container.MuiDialogContent-root p{
     margin: 0 auto;
 }
 
-.dialog-container.MuiPaper-root {
+.job-dialog-container.MuiPaper-root {
     border: 2px black solid;
     border-radius: 20px;
 

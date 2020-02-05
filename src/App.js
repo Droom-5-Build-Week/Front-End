@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import { MenuNav } from './components/dashboard/MenuNav'; 
+import { Dashboard } from './components/dashboard/Dashboard'; 
 
 function App() {
   return (
     <div className="App">
-      <MenuNav />
+      <Dashboard userType='provider' />
     </div>
   );
 }
