@@ -12,17 +12,25 @@ const { hide } = cogoToast.success('Success. ', {
 })
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const [Login, setLogin] = useState({
-    Seeker: true,
-    Provider: true
-  })
+  const [credentials, setCredentials] = useState({
+    email: '',
+    password: '',
+})
 
   const [state, setState] = React.useState({
     checkedA: true,
   });
+
+  const handlecredentials = (e) => {
+    e.persist();
+    console.log(e)
+    setCredentials({
+        ...credentials,
+        [e.target.name]: e.target.value
+    })
+    console.log(credentials)
+}
 
   function validationForm() {
     return email.length > 0 && password > 0;
@@ -39,6 +47,42 @@ export default function LoginForm() {
     
   };
 
+  const logInValidation = () => {
+
+    let logInPwValid = false;
+    let logInUnValid = false;
+
+    credentials.password.length >= "8"
+        ? (logInPwValid = true)
+        : cogoToast.warn("Sorry, that password is a little short!", {
+            position: "bottom-right"
+        });
+
+    //check for valid email
+    const emailRegEx = /\S+@\S+\.\S+/;
+    emailRegEx.test(credentials.username.toLowerCase()) === true
+        ? (logInUnValid = true)
+        : cogToast.warn("Sorry, that username is invalid!", {
+            position: "bottom-right"
+        });
+
+    return (logInPwValid === true && logInUnValid === true) ? true : false; //allows true to return when all credentials pass
+};
+
+  const handleLoginSubmit = e => {
+    e.preventDefault();
+    const loginPasses = logInValidation();
+    if(loginPasses){
+      axios.post('https://droom-bt-tl.herokuapp.com/api/auth/login', credentials)
+      .then( resp => {
+        localStorage.setItem('userType', (checkedA) ? 'seeker': 'provider'))
+        localStorage.setItem('token', resp.data.token)
+        props.history.push('/dashboard');
+      })
+    }
+  }
+
+
   return state.checkedA 
     ? 
       (
@@ -53,8 +97,8 @@ export default function LoginForm() {
               autoFocus
               type="email"
               autoComplete="new-email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={credentials.email}
+              onChange={handleCredentials}
             />
           </div>
           <div controlId="password">
@@ -63,8 +107,8 @@ export default function LoginForm() {
             <TextField
               type="password"
               autoComplete="new-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              value={credentials.password}
+              onChange={handleCredentials}
             />
           </div>
           <Button  variant="outlined" disable={`${!validationForm()}`} type="submit">
@@ -92,8 +136,8 @@ export default function LoginForm() {
               autoFocus
               type="email"
               autoComplete="new-email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              value={credentials.email}
+              onChange={handleCredentials}
             />
           </div>
           <div controlId="password">
@@ -102,8 +146,8 @@ export default function LoginForm() {
             <TextField
               type="password"
               autoComplete="new-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              value={credentials.password}
+              onChange={handleCredentials}
             />
           </div>
           <Button variant="outlined" disable={`${!validationForm()}`} type="submit">
