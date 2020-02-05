@@ -11,11 +11,24 @@
     float: left;
     display: flex;
     flex-direction: row-reverse;
+
+    height: 98vh;
 }
 
 .slide-menu {
-    height: 200px;
-    width: 50px;
+    height: 100%;
+    width: 100px;
+
+    background-color: green;
+}
+
+.slide-menu-item {
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
+
+.slide-menu-item:hover {
+    text-decoration: underline;
 }
 
 .icon-container {
