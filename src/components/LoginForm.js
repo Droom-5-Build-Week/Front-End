@@ -84,7 +84,7 @@ export default function LoginForm(props) {
         localStorage.setItem('userType', (state.checkedA) ? 'seeker': 'provider');
         localStorage.setItem('userId', resp.data.id);
         localStorage.setItem('token', resp.data.token);
-        // props.history.push('/dashboard');
+        props.history.push('/dashboard');
 
       })
     }
