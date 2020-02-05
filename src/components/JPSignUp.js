@@ -1,16 +1,49 @@
 import React from 'react';
 import axios from 'axios';
 
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
 
 import './JP.css';
 
 export const JPSignUp = props => {
 
+    const [toggle, setToggle] = React.useState(false);
+
+    React.useEffect( () => {
+        console.log('running effect');
+        // console.log(resp);
+        const obj = {
+            email: 'hudson1@email.com',
+            password: 'password'
+        }
+        axios.post('https://droom-bt-tl.herokuapp.com/api/auth/company/login', obj )
+        .then( resp => {
+            console.log(resp);
+            localStorage.setItem('token', resp.data.token);
+            setToggle(!toggle);
+        })
+        .catch( err => {
+            console.log(err);
+        })
+    }, [])
+
+    React.useEffect( () => {
+        console.log('getting users');
+
+        const obj = { 
+            "name": "FTP",
+          }
+        axiosWithAuth().get('https://droom-bt-tl.herokuapp.com/api/companies/2/jobs/skills')
+        .then( resp => {
+            console.log(resp);
+        })
+    }, [toggle]);
+
     const initialInfo = {
-        company: '',
+        name: '',
         location: '',
         email: '',
         password: ''
@@ -31,10 +64,18 @@ export const JPSignUp = props => {
         evt.preventDefault();
 
         //send api put
-        // axios.put('end-point', info);
+        axios.post('https://droom-bt-tl.herokuapp.com/api/auth/company/register', info)
+        .then( resp => {
+            //if we are here then we have registered the user
+            // props.history.push('/login');
+            setToggle(true);
+        })
+        .catch( err => {
+            //TODO do cogo-toast for invalid entry or whatever
+            console.log(err);
+        })
         console.log(info);
         setInfo(initialInfo);
-        // props.history.push('/dashboard');
     }
 
     return (
@@ -47,8 +88,8 @@ export const JPSignUp = props => {
                     <TextField 
                         label='Company'
                         type='text' 
-                        name='company' 
-                        value={info.company} 
+                        name='name' 
+                        value={info.name} 
                         onChange={(evt) => handleChange(evt)} />
                 
                     <TextField 
