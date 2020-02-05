@@ -1,0 +1,14 @@
+.FormContainer{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding-bottom: 25px; */
+}
+
+.FormParent{
+  padding-bottom: 25px;
+  border: 2px black solid;
+  width:40%;
+  margin: 0 auto;
+}
