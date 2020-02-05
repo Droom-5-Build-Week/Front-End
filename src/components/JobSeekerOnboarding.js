@@ -44,7 +44,7 @@ const JobSeekerOnboarding = (props) =>{
   }
 
   const [userInfo, setUserInfo] = React.useState(initialUserInfo)
-  const [userInfoR, setUserInfoR] = useState(initialUserInfoR)
+  // const [userInfoR, setUserInfoR] = useState(initialUserInfoR)
 
   return (
     <div className="FormParent">
