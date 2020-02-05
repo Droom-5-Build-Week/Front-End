@@ -15,10 +15,6 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [Login, setLogin] = useState({
-    Seeker: true,
-    Provider: true
-  })
 
   function validationForm() {
     return email.length > 0 && password > 0;
