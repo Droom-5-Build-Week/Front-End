@@ -55,7 +55,7 @@ export default function LoginForm(props) {
 
     //check for valid email
     const emailRegEx = /\S+@\S+\.\S+/;
-    emailRegEx.test(credentials.username.toLowerCase()) === true
+    emailRegEx.test(credentials.email.toLowerCase()) === true
         ? (logInUnValid = true)
         : cogoToast.warn("Sorry, that username is invalid!", {
             position: "bottom-right"
@@ -66,7 +66,7 @@ export default function LoginForm(props) {
 
   const handleLoginSubmit = e => {
     e.preventDefault();
-    const loginPasses = true; //logInValidation();
+    const loginPasses = logInValidation();
     if(loginPasses){
       console.log(credentials);
       const endpoint = (state.checkedA) ? 'https://droom-bt-tl.herokuapp.com/api/auth/login' : 'https://droom-bt-tl.herokuapp.com/api/auth/company/login'
