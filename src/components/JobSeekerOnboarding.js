@@ -9,12 +9,13 @@ const JobSeekerOnboarding = (props) =>{
 
   const handleSumit = e => {
     e.preventDefault();
+    console.log('userInfo', userInfo);
     axios.post('https://droom-bt-tl.herokuapp.com/api/auth/register', userInfo)
       .then( resp => {
         console.log(resp);
         // registered account correctly
 
-        props.history.push('/login')
+        // props.history.push('/login')
 
       })
       .catch( err =>{
@@ -39,8 +40,8 @@ const JobSeekerOnboarding = (props) =>{
     email:'',
     location: '',
     password: '',
-    professionalIntrests: '',
-    personalSkills:'',
+    personal_interests: '',
+    personal_skills:''
   }
 
   const [userInfo, setUserInfo] = React.useState(initialUserInfo)
@@ -61,11 +62,11 @@ const JobSeekerOnboarding = (props) =>{
             <TextField type="password" label="Password" name="password" value={userInfo.password} onChange={(e) => handleChanges(e)} />
             <br/>
             <ListDialog setList={(items) => setUserInfo({ ...userInfo, professionalIntrests: items})} buttonText="Add Interests" title='Add Interests' />
-            <TextField label="Professional Intrests" name="professionalIntrests" disabled={true} value={userInfo.professionalIntrests} />
+            <TextField label="Professional Intrests" name="personal_interests" disabled={true} value={userInfo.personal_interests} />
             <br/>
             {/* <SkillsDialog setSkills={ (obj) => setUserInfo({...userInfo, personalSkills: obj.value})} /> */}
             <ListDialog setList={(items) => setUserInfo({...userInfo, personalSkills: items})} buttonText="Add Skills" title='Add Skills' />
-            <TextField label="Personal Skills" name="personalSkills" disabled={true} value={userInfo.personalSkills}/>
+            <TextField label="Personal Skills" name="personal_skills" disabled={true} value={userInfo.personal_skills}/>
             
 
           </div>
