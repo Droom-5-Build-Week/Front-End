@@ -19,6 +19,7 @@ const JobSeekerOnboarding = (props) =>{
       })
       .catch( err =>{
         console.log("Server returned an error:", err)
+        
       })
     console.log(localStorage.getItem('userinfo'));
   }
