@@ -84,12 +84,20 @@ export default function LoginForm(props) {
         localStorage.setItem('userType', (state.checkedA) ? 'seeker': 'provider');
         localStorage.setItem('userId', resp.data.id);
         localStorage.setItem('token', resp.data.token);
-        // props.history.push('/dashboard');
+        props.history.push('/dashboard');
 
       })
     }
   }
 
+  function handleSignUpRequest() {
+    if(state.checkedA) {
+      //seeker
+      props.history.push('/sign-up-seeker')
+    } else {
+      props.history.push('/sign-up-provider')
+    }
+  }
 
   return state.checkedA 
     ? 
@@ -128,10 +136,13 @@ export default function LoginForm(props) {
 
           <Switch
           // checked={state.checkedA, Login.Provider}
-          onChange={handleChange('checkedA')}
-          value="checkedA"
+          checked={state.checkedA}
+          onChange={() => setState({checkedA: !state.checkedA})}
+          value={state.checkedA}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
+
+          <div className='register-account' onClick={ () => handleSignUpRequest()}>Create an account</div>
       </div>)
     :
       (
@@ -169,9 +180,11 @@ export default function LoginForm(props) {
 
           <Switch
           checked={state.checkedA}
-          onChange={handleChange('checkedA')}
-          value="checkedA"
+          onChange={() => setState({checkedA: !state.checkedA})}
+          value={state.checkedA}
           inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
+
+        <div className='register-account' onClick={ () => handleSignUpRequest()}>Create an account</div>
       </div>)
 }

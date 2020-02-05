@@ -15,7 +15,7 @@ const JobSeekerOnboarding = (props) =>{
         console.log(resp);
         // registered account correctly
 
-        // props.history.push('/login')
+        props.history.push('/')
 
       })
       .catch( err =>{
