@@ -1,0 +1,37 @@
+.menu-show {
+    display: inline-block;
+}
+
+.menu-hide {
+    display: none;
+}
+
+.slide-menu-container {
+    /* border: 2px solid black; */
+    float: left;
+    display: flex;
+    flex-direction: row-reverse;
+
+    height: 35vh;
+}
+
+.slide-menu {
+    height: 100%;
+    width: 100px;
+
+    background-color: green;
+}
+
+.slide-menu-item {
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
+
+.slide-menu-item:hover {
+    text-decoration: underline;
+}
+
+.icon-container {
+    height: 50px;
+    width: 50px;
+}

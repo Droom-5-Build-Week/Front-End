@@ -1,0 +1,30 @@
+.general-list {
+    /* border: 2px solid black; */
+
+    display: flex;
+    flex-direction: row;
+    /* justify-content:  */
+
+    height: 300px;
+}
+
+.general-list-items {
+    margin: 10px;
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    margin-top: 25px;
+    width: 200px;
+}
+
+.top-seeker-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+
+    /* border: 2px orange solid; */
+}
+
+.general-jobs {
+    margin-bottom: 50px;
+}
