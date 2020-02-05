@@ -4,6 +4,14 @@ import { GeneralJobsList } from '../Jobs/GeneralJobsList';
 
 export const GeneralJobs = props => {
 
+    const renderCorrectJobButton = () => {
+        if(props.userType === 'provider') {
+            return <NewJobDialog />
+        } else if(props.userType === 'seeker') {
+            return <NewJobDialog /> //<div className='prevJobDialog'>Add Prev Job</div>
+        }
+    }
+
     return (
         <div className='general-jobs'>
             <span>Your Jobs:</span>
@@ -12,7 +20,8 @@ export const GeneralJobs = props => {
                 <GeneralJobsList />
             </div>
 
-            <NewJobDialog />
+            { renderCorrectJobButton() }
+            
         </div>
     )
 }

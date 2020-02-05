@@ -10,9 +10,9 @@ export const Dashboard = props => {
 
     const renderCorrectUserType = () => {
         if(props.userType === 'seeker') {
-            return <SeekerDashboard />
+            return <SeekerDashboard userType='seeker'/>
         } else if(props.userType === 'provider') {
-            return <ProviderDashboard />
+            return <ProviderDashboard userType='provider'/>
         }
     }
 
