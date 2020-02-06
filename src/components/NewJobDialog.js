@@ -11,6 +11,11 @@ import SkillsDialog from './SkillsDialog';
 
 import { JobType } from './JobType';
 
+<<<<<<< HEAD
+=======
+// import './NewJobDialog.css';
+
+>>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
 export default function NewJobDialog() {
   const [open, setOpen] = React.useState(false);
 
@@ -50,6 +55,7 @@ export default function NewJobDialog() {
 
   return (
     <div>
+<<<<<<< HEAD
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Post a new Job
       </Button>
@@ -114,6 +120,61 @@ export default function NewJobDialog() {
           </Button>
         </DialogActions>
       </Dialog>
+=======
+      <Button className='new-job-dialog-button' variant="outlined" color="primary" onClick={handleClickOpen}>
+        Post a new Job
+      </Button>
+      <div className='job-dialog-container'>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth='false' maxWidth='md'>
+          <DialogTitle id="form-dialog-title">Create a New Job</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Fill in the details below:
+            </DialogContentText>
+          
+              <TextField 
+                  autoFocus
+                  label='Position' 
+                  type='text' 
+                  name='position'
+                  value={jobInfo.position} 
+                  onChange={(evt) => handleChange(evt)} />
+
+              <JobType setType={ (type) => setJobInfo( { ...jobInfo, type: type})} setDuration={ duration => setJobInfo({ ...jobInfo, duration: duration}) }/>
+
+              <br />
+              <br />
+
+              <SkillsDialog setSkills={ (obj) => setJobInfo({...jobInfo, skills: obj.value}) }/>
+
+              <br />
+
+              <TextField
+                  label='Skills'
+                  disabled={true}
+                  value={jobInfo.skills} />
+
+              <TextField 
+                  label='Description' 
+                  type='text' 
+                  name='description' 
+                  value={jobInfo.description} 
+                  multiline={true}
+                  rowsMax='4'
+                  onChange={(evt) => handleChange(evt)} />
+
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => handleClose(false)} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={() => handleClose(true)} color="primary">
+              Post
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+>>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
     </div>
   );
 }

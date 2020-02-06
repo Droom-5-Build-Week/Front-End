@@ -37,6 +37,7 @@
   }
 }
 
+<<<<<<< HEAD
 .jp-popup {
   /* min-width: 450px; */
   max-width: 500px;
@@ -56,3 +57,12 @@ h2, h3 {
   display: flex;
   flex-direction: column;
 }
+=======
+.register-account {
+  text-decoration: underline;
+}
+
+.register-account:hover {
+  color: #c4c4c4;
+}
+>>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb

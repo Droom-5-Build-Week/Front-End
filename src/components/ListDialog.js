@@ -7,22 +7,18 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import SkillsList from './SkillsList';
-<<<<<<< HEAD
-=======
-import './SkillsDialog.css'
->>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
+import GeneralList from './GeneralList';
 
-export default function SkillsDialog(props) {
+export default function ListDialog(props) {
   const [open, setOpen] = React.useState(false);
 
-  const initialSkills = [
-    'Web Development',
-    'Backend Development',
-    'React'
-]
+  const initialList = [
+    'Item 1',
+    'Item 2',
+    'Item 3'
+  ] 
 
-  const [skills, setSkills] = React.useState([]);
+  const [list, setList] = React.useState(initialList);
 
   const handleClickOpen = () => {
     //axios
@@ -32,8 +28,8 @@ export default function SkillsDialog(props) {
   const handleClose = (flag) => {
     if(flag) {
       // add skills
-      console.log('skillsDialog skills:', skills);
-      props.setSkills({value: skills.join(',')});
+      console.log('skillsDialog skills:', list);
+      props.setList({value: list.join(',')});
       setOpen(false);
     } else {
       // just close
@@ -44,20 +40,13 @@ export default function SkillsDialog(props) {
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Skills
+        {props.buttonText}
       </Button>
-<<<<<<< HEAD
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={false} maxWidth='sm'>
-=======
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth='false' maxWidth='sm'>
->>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
-        <DialogTitle id="form-dialog-title">Select Skills</DialogTitle>
+        <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
-          {/* <DialogContentText>
-            Choose skills from list or add a new one:
-          </DialogContentText> */}
 
-            <SkillsList setSkills={(arr) => setSkills(arr)} initialSkills={initialSkills}/>
+            <GeneralList setList={(arr) => setList(arr)} initialList={initialList}/>
             
         </DialogContent>
         <DialogActions>

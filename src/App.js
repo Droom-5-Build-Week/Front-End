@@ -1,9 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-//import NewJobDialog from './components/NewJobDialog';
-import JobSeekerOnboarding from './Components/JobSeekerOnboarding';
+import LoginForm from './components/LoginForm';
+import JobSeekerOnboarding from './components/JobSeekerOnboarding';
+import { JPSignUp } from './components/JPSignUp';
+import { Dashboard } from './components/dashboard/Dashboard';
+
+import {Route, Switch} from 'react-router-dom';
+
+import PrivateRoute from './utils/PrivateRoute';
+
 
 function App() {
 
@@ -31,8 +37,13 @@ function App() {
 
   return (
     <div className="App">
-      {/* <NewJobDialog /> */}
-      <JobSeekerOnboarding />
+      <Switch>
+        <Route exact path='/' render={ props => <Dashboard userType='provider' {...props}/> }/>
+        <Route exact path='/sign-up-seeker' render={ props => <JobSeekerOnboarding {...props} /> }/>
+        <Route exact path='/sign-up-provider' render={ props => <JPSignUp {...props}/> } />
+        <PrivateRoute path='/dashboard' render={props => <Dashboard />} />
+      </Switch>
+
     </div>
   );
 }

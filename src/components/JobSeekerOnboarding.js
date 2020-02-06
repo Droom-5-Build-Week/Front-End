@@ -1,7 +1,7 @@
 import React,  {useState} from 'react';
 import { Button, Card, TextField } from '@material-ui/core'
-import SkillsDialog from './SkillsDialog';
-import IntrestsDianlog from './IntrestsDialog';
+import ListDialog from './ListDialog';
+
 import axios from 'axios';
 import './jsStyles.css'
 
@@ -9,19 +9,20 @@ const JobSeekerOnboarding = (props) =>{
 
   const handleSumit = e => {
     e.preventDefault();
+    console.log('userInfo', userInfo);
     axios.post('https://droom-bt-tl.herokuapp.com/api/auth/register', userInfo)
       .then( resp => {
         console.log(resp);
         // registered account correctly
 
-        props.history.push('/login')
+        props.history.push('/')
 
       })
       .catch( err =>{
         console.log("Server returned an error:", err)
         
       })
-    console.log(localStorage.getItem('userinfo'));
+    // console.log(localStorage.getItem('userinfo'));
   }
 
   const handleChanges = e => {
@@ -39,13 +40,12 @@ const JobSeekerOnboarding = (props) =>{
     email:'',
     location: '',
     password: '',
-    professionalIntrests: '',
-    personalSkills:'',
+    personal_interests: '',
+    personal_skills:''
   }
 
-
   const [userInfo, setUserInfo] = React.useState(initialUserInfo)
-  const [userInfoR, setUserInfoR] = useState(initialUserInfoR)
+  // const [userInfoR, setUserInfoR] = useState(initialUserInfoR)
 
   return (
     <div className="FormParent">
@@ -56,16 +56,17 @@ const JobSeekerOnboarding = (props) =>{
           
           <div className="FormContainer">
             
-            <TextField label="Name*" name="name" value={userInfo.name} onChange={(e) => handleChanges(e)} required={true} />
-            <TextField label="Email*" name="email" value={userInfo.email} onChange={(e) => handleChanges(e)} required={true}/>
-            <TextField label="Address*" name="location" value={userInfo.location} onChange={(e) => handleChanges(e)}required={true}/>
-            <TextField type="password*" label="Password" name="password" value={userInfo.password} onChange={(e) => handleChanges(e)} required={true}/>
+            <TextField label="Name" name="name" value={userInfo.name} onChange={(e) => handleChanges(e)} />
+            <TextField label="Email" name="email" value={userInfo.email} onChange={(e) => handleChanges(e)} />
+            <TextField label="Address" name="location" value={userInfo.location} onChange={(e) => handleChanges(e)}/>
+            <TextField type="password" label="Password" name="password" value={userInfo.password} onChange={(e) => handleChanges(e)} />
             <br/>
-            <IntrestsDianlog setIntrests = { (obj) => setUserInfo({...userInfo, professionalIntrests: obj.value})} />
-            <TextField label="Professional Intrests" name="professionalIntrests" disabled={true} value={userInfo.professionalIntrests} />
+            <ListDialog setList={(items) => setUserInfo({ ...userInfo, professionalIntrests: items})} buttonText="Add Interests" title='Add Interests' />
+            <TextField label="Professional Intrests" name="personal_interests" disabled={true} value={userInfo.personal_interests} />
             <br/>
-            <SkillsDialog setSkills={ (obj) => setUserInfo({...userInfo, personalSkills: obj.value})} />
-            <TextField label="Personal Skills" name="personalSkills" disabled={true} value={userInfo.personalSkills}/>
+            {/* <SkillsDialog setSkills={ (obj) => setUserInfo({...userInfo, personalSkills: obj.value})} /> */}
+            <ListDialog setList={(items) => setUserInfo({...userInfo, personalSkills: items})} buttonText="Add Skills" title='Add Skills' />
+            <TextField label="Personal Skills" name="personal_skills" disabled={true} value={userInfo.personal_skills}/>
             
 
           </div>
