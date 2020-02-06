@@ -67,7 +67,7 @@ export default function LoginForm(props) {
     e.preventDefault();
     const loginPasses = true; //logInValidation();
     if(loginPasses){
-      // console.log(credentials);
+      console.log(credentials);
       const endpoint = (state.checkedA) ? 'https://droom-bt-tl.herokuapp.com/api/auth/login' : 'https://droom-bt-tl.herokuapp.com/api/auth/company/login'
       axios.post(endpoint, credentials)
       .then( resp => {
@@ -79,6 +79,9 @@ export default function LoginForm(props) {
         localStorage.setItem('token', resp.data.token);
         props.history.push('/dashboard');
 
+      })
+      .catch( err => {
+        console.log(err);
       })
     }
   }

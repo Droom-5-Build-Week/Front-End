@@ -4,7 +4,7 @@ import './App.css';
 import LoginForm from './components/LoginForm';
 import JobSeekerOnboarding from './components/JobSeekerOnboarding';
 import { JPSignUp } from './components/JPSignUp';
-import { Dashboard } from './components/dashboard/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 
 import {Route, Switch} from 'react-router-dom';
 

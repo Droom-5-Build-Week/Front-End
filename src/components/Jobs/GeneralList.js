@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const GeneralList = props => {
-    console.log('general list props', props);
+    // console.log('general list props', props);
 
     const [list, setList] = React.useState([]);
 
