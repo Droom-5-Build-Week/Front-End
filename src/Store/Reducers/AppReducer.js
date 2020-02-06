@@ -113,19 +113,8 @@ const initialState = {
     location:"",
 		personal_intrests:"",
 		personal_skills:"",
-		experiences: [{
-			id: "",
-			company_name: "",
-			job_title: "",
-			user_id: "",
-		}],
-		matched_jobs:[{
-			name: 0,
-			position_name: "",
-			type: "",
-			job_bio: "",
-			skills: "",
-		}],
+		experiences: [],
+		matched_jobs: []
 
 	},
 	provider:{
@@ -133,20 +122,8 @@ const initialState = {
 		name: "",
 		location: "",
 		email: "",
-		jobs: [{
-			id: "",
-			position_name: "",
-			type: "",
-			job_bio: "",
-			durration: "",
-			skills: "",
-		}],
-		matches: [{
-			name: "",
-			email: "",
-			position_name: "",
-			type: "",
-		}]
+		jobs: [],
+		matches: []
 	}
 	
 }
@@ -177,60 +154,56 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USER_BY_ID_SUCCESS:
-      let userTypeObj = {};
-
-      if(state.userType === 1) {
-        userTypeObj = {
-        seeker: {
-          id: action.payload.id,
-          name: action.payload.name,
-          personal_interests: action.payload,
-          personal_skills: action.payload.person_skills,
-          experiences: action.payload.experiences
-          },
-        provider: {
-
-          }
-        }
-
-        getAllMatchsForJS(id);
-
-      } else if(userType === 2) {
-        userTypeObj = {
-          seeker: {
-            id: "",
-            name: "",
-            personal_interests: "",
-            personal_skills: "",
-            experiences: []
-            },
-          provider: {
-            id: state.provider.id,
-            name: state.provider.name,
-            location: state.provider.location,
-            email: state.provider.email,
-            jobs: state.provider.jobs
-          }
-        } 
-      }
-
-      return {
+      const obj = {seeker: action.payload}
+    return{
         ...state,
-        // isFetching: false,
-        // userType: action.payload.userType,
-        // seeker: userTypeObj.seeker,
-        // provider: userTypeObj.provider
+        isFetching:false,
+        userType: 1,
+        seeker: {...obj, experiences:{...experiences}, matches:{...matches}}
       }
 
     case FETCH_USER_BY_ID_FAILURE:
+      return{
+        ...state,
+        isFetching:false
+      }
 
     case UPDATE_USER_BY_ID_START:
+      return{
+        ...state,
+        isPutting: true
+      }
     case UPDATE_USER_BY_ID_SUCCESS:
+      const obj = {...seeker, seeker: action.payload}
+      return{
+        ...state,
+        isPutting:false,
+        seeker: obj
+      }
     case UPDATE_USER_BY_ID_FAILURE:
+      return{
+        ...seeker,
+        isPutting:false,
+        error: action.payload
+      }
 
     case DELETE_USER_BY_ID_START:
+      return{
+        ...state,
+        isDeleting:true
+      }
     case DELETE_USER_BY_ID_SUCCESS:
+      return{
+        ...state,
+        isDeleting:false,
+        seeker: action.payload
+      }
     case DELETE_USER_BY_ID_FAILURE:
+      return{
+        ...state,
+        isDeleting:false,
+        error: action.payload
+      }
 
     case POST_USER_EXPERIANCE_FOR_USER_BY_ID_START:
       return{
@@ -316,15 +289,55 @@ const userReducer = (state = initialState, action) => {
     case FETCH_ALL_COMPANIES_FAILURE:
 
     case FETCH_A_COMPANY_BY_ID_START:
+      return{
+        ...state,
+        isFetching:true
+      }
     case FETCH_A_COMPANY_BY_ID_SUCCESS:
+      const obj = {...provider, provider:action.payload}
+      return{
+        ...state,
+        userType:2,
+        isFetching: false,
+        provider:obj
+      }
     case FETCH_A_COMPANY_BY_ID_FAILURE:
+      return{
+        ...state,
+        isFetching:false,
+        errror: action.provider
+      }
 
     case UPDATE_A_COMPANY_BY_ID_START:
+      return{
+        ...state,
+        isPutting: true
+      }
     case UPDATE_A_COMPANY_BY_ID_SUCCESS:
+      const obj = {...provider, provider:action.payload}
+      return{
+        ...state,
+        isPutting: false,
+        provider:obj
+      }
     case UPDATE_A_COMPANY_BY_ID_FAILURE:
+      return{
+        ...state,
+        isPutting: false,
+        error: action.provider
+      }
 
     case DELETE_A_COMPANY_BY_ID_START:
+      return{
+        ...state,
+        isDeleting:true
+      }
     case DELETE_A_COMPANY_BY_ID_SUCCESS:
+      return{
+        ...state,
+        isDeleting:false,
+        state: action.payload
+      }
     case DELETE_A_COMPANY_BY_ID_FAILURE:
 
     case POST_JOB_FOR_COMPANY_START:
