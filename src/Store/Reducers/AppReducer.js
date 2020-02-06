@@ -100,6 +100,8 @@ import{
 //set up init. state obj.
 
 const initialState = {
+  allUsers: {},
+  readyForUpdate: false,
   isFetching : false,
   isPutting: false,
   isDeleting: false,
@@ -151,7 +153,10 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USERS_SUCCESS:
-
+      return {
+        ...state,
+        allUsers: action.payload
+      }
       
     case FETCH_USERS_FAILURE:
       return{
@@ -217,10 +222,9 @@ const userReducer = (state = initialState, action) => {
         isDeleting:true
       }
     case DELETE_USER_BY_ID_SUCCESS:
-      return{
+      return {
         ...state,
-        isDeleting:false,
-        seeker: action.payload
+        readyForUpdate: true
       }
     case DELETE_USER_BY_ID_FAILURE:
       return{
