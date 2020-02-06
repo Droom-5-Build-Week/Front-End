@@ -4,17 +4,9 @@ import { GeneralListView } from '../Jobs/GeneralListView';
 
 export const SeekerDashboard = props => {
 
-    const skillsList = [
-        {
-            name: 'Javascript'
-        }
-    ];
+    const [skillsList, setSkillsList] = React.useState([]);
 
-    const interestsList = [
-        {
-            name: 'Leadership'
-        }
-    ]
+    const [interestsList, setInterestsList] = React.useState([]);
     
     return (
         <div className='seeker-dashboard'>

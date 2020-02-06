@@ -22,7 +22,7 @@ const JobSeekerOnboarding = (props) =>{
         console.log("Server returned an error:", err)
         
       })
-    console.log(localStorage.getItem('userinfo'));
+    // console.log(localStorage.getItem('userinfo'));
   }
 
   const handleChanges = e => {
