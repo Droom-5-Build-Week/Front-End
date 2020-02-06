@@ -1,7 +1,7 @@
 import React from 'react';
 import NewJobDialog from '../NewJobDialog';
 import PrevJobDialog from '../PreviousJobDialog';
-import { GeneralJobsList } from '../Jobs/GeneralJobsList';
+import GeneralJobsList from '../Jobs/GeneralJobsList';
 import { connect } from 'react-redux';
 import { createExperianceByUserId } from '../../Store/Actions/AppActions';
 
@@ -14,7 +14,7 @@ const GeneralJobs = props => {
     const renderCorrectJobButton = () => {
         if(props.userType === 'provider') {
             return <NewJobDialog />
-        } else if(props.userType === 'seeker' && props.type === 'experience') {
+        } else if(props.userType === 'seeker' && props.jobType === 'experience') {
             return <PrevJobDialog handlePrevJob={addPrevJob} />
         }
     }

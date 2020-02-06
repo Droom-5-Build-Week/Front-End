@@ -105,17 +105,27 @@ const initialState = {
   isDeleting: false,
   userType: 1,
   error: "",
-  id: 0,
+  id: -1,
 	seeker: {
     id: 0,
     name:"",
     email:"",
     location:"",
-		personal_intrests:"",
-		personal_skills:"",
-		experiences: [],
-		matched_jobs: []
-
+		experiences: [{
+			id: "",
+			company_name: "",
+			job_title: "",
+			user_id: "",
+		}],
+		matched_jobs:[{
+			name: 0,
+			position_name: "",
+			type: "",
+			job_bio: "",
+			skills: "",
+		}],
+		personal_interests:"",
+		personal_skills:""
 	},
 	provider:{
 		id: 0,
@@ -130,7 +140,9 @@ const initialState = {
 //create reducer function
 const userReducer = (state = initialState, action) => {
 
-  console.log('reducer: action', action, 'state', state);
+  if(action.type.includes("SUCCESS") || action.type.includes("FAILURE")) {
+    console.log('reducer: action', action, 'state', state)
+  }
 
   switch (action.type) {
     case FETCH_USERS_START:
@@ -151,16 +163,28 @@ const userReducer = (state = initialState, action) => {
     case FETCH_USER_BY_ID_START:
       return{
         ...state, 
-        isFetching:true
+        isFetching:true,
+        id: action.payload
       }
     case FETCH_USER_BY_ID_SUCCESS:
-      const obj = {seeker: action.payload}
-    return{
+      // console.log(action);
+
+      const obj = {
         ...state,
-        isFetching:false,
-        userType: 1,
-        seeker: {...obj, experiences:{...experiences}, matches:{...matches}}
+        isFetching: false,
+        id: action.payload.id,
+        seeker: {
+          ...state.seeker,
+          name: action.payload.name,
+          email: action.payload.email,
+          location: action.payload.location,
+          personal_skills: action.payload.personal_skills,
+          personal_interests: action.payload.personal_interests,
+          experiences: action.payload.experiences
+        }
       }
+
+      return obj;
 
     case FETCH_USER_BY_ID_FAILURE:
       return{
@@ -231,11 +255,13 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_SUCCESS:
-      const userobject = {...state, seeker:action.payload}
-      return{
+      //action.payload
+      return {
         ...state,
-        isFetching:false,
-        state: userobject
+        seeker: {
+          ...state.seeker,
+          experiences: action.payload
+        }
       }
     case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_FAILURE:
       return{
@@ -381,7 +407,10 @@ const userReducer = (state = initialState, action) => {
       return{
         ...state,
         isFetching: false,
-        matches: action.payload
+        seeker: {
+          ...state.seeker,
+          matched_jobs: action.payload
+        }
       }
     case FETCH_MATCHS_JS_FAILURE:
       return{

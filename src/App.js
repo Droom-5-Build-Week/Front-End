@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import LoginForm from './Components/LoginForm';
-import JobSeekerOnboarding from './Components/JobSeekerOnboarding';
-import { JPSignUp } from './Components/JPSignUp';
-import { Dashboard } from './Components/dashboard/Dashboard';
+import LoginForm from './components/LoginForm';
+import JobSeekerOnboarding from './components/JobSeekerOnboarding';
+import { JPSignUp } from './components/JPSignUp';
+import Dashboard from './components/dashboard/Dashboard';
 
 import {Route, Switch} from 'react-router-dom';
 

@@ -2,26 +2,28 @@ import React from 'react';
 import GeneralJobs from '../Jobs/GeneralJobs';
 import { GeneralListView } from '../Jobs/GeneralListView';
 
-import { getUsersById } from '../../Store/Actions/AppActions';
+import { updateUserById } from '../../Store/Actions/AppActions';
 
 import { connect } from 'react-redux';
 
 const SeekerDashboard = props => {
 
-    console.log('seeker dashboard props', props);
+    // console.log('seeker dashboard props', props);
 
-    React.useEffect( () => {
-        //get the user
-        console.log('getting user via getUsersById');
-        props.getUsersById(props.id)
-    }, []);
+    const handleAddMoreToList = (list, type) => {
+        if(type === 'skills') {
+            props.updateUserById()
+        } else if(type === 'interests') {
+
+        }
+    }
 
     return (
         <div className='seeker-dashboard'>
-            <h1>Job Seeker Dashboard for {props.name}</h1>
+            <h1>Job Seeker Dashboard for {props.seeker.name}</h1>
             <div className='top-seeker-dashboard'>
-                <GeneralListView list={props.skills} type='skills' />
-                <GeneralListView list={props.interests} type='interests' />
+                <GeneralListView addMoreToList={ handleAddMoreToList } list={props.seeker.personal_skills} type='skills' />
+                <GeneralListView addMoreToList={ handleAddMoreToList } list={props.seeker.personal_interests} type='interests' />
             </div>
             <GeneralJobs title='Job Matches:' jobType='matches' userType={props.userType}/>
             <GeneralJobs title='Experiences:' jobType='experience' userType={props.userType} />
@@ -31,9 +33,8 @@ const SeekerDashboard = props => {
 
 const mapStateToProps = state => {
     return {
-        skills: state.seeker.personal_skills,
-        interests: state.personal_interests
+        seeker: state.seeker
     }
 }
 
-export default connect(mapStateToProps, { getUsersById })(SeekerDashboard);
+export default connect(mapStateToProps, { updateUserById })(SeekerDashboard);

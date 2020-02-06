@@ -14,11 +14,6 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import userReducer from './Store/Reducers/AppReducer';
 
-// const store = createStore(
-//     reducer,
-//     applyMiddleware(thunk)
-// );
-
 const store = createStore(
     userReducer,
     applyMiddleware(thunk)
@@ -26,7 +21,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Router>
-        <Provider store={store} >
+        <Provider store={store}>
             <App />
         </Provider>
     </Router>

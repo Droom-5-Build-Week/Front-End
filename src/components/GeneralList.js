@@ -17,12 +17,12 @@ export default function GeneralList(props) {
 
   const handleAddNewListItem = evt => {
       evt.preventDefault();
-      console.log('adding new skill', newListItem.value);
+      // console.log('adding new skill', newListItem.value);
       const newListDisplay = [...listDisplay];
       newListDisplay.push(newListItem.value);
       setListDisplay(newListDisplay);
 
-      console.log('after adding', listDisplay);
+      // console.log('after adding', listDisplay);
 
       setNewListItem({value: ''});
   }
@@ -51,7 +51,7 @@ export default function GeneralList(props) {
       }
     })
     // set new array of skills from parent state setter
-    console.log('setting skills in skillDialog', checkedListItems);
+    // console.log('setting skills in skillDialog', checkedListItems);
     props.setList(checkedListItems);
   };
 
