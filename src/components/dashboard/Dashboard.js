@@ -8,14 +8,15 @@ import './dashboard.css';
 
 export const Dashboard = props => {
 
-    // const type = localStorage.getItem('userType');
+    const type = localStorage.getItem('userType');
 
     const renderCorrectUserType = () => {
-        if(props.userType === 'seeker') {
+        if(type === 'seeker') {
             return <SeekerDashboard userType='seeker'/>
-        } else if(props.userType === 'provider') {
+        } else if(type === 'provider') {
             return <ProviderDashboard userType='provider'/>
         }
+        console.log(props.userType, 'rendered a user by type')
     }
 
     return (
