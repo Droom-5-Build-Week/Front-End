@@ -1,10 +1,8 @@
 import React from 'react';
-import { GeneralJobs } from '../Jobs/GeneralJobs';
+import GeneralJobs from '../Jobs/GeneralJobs';
 
 
 export const ProviderDashboard = props => {
-    
-    
     
     return (
         <div className='provider-dashboard'>

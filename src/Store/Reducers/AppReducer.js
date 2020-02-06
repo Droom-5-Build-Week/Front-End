@@ -105,6 +105,7 @@ const initialState = {
   isDeleting: false,
   userType: 1,
   error: "",
+  id: 0,
 	seeker: {
     id: 0,
     name:"",
