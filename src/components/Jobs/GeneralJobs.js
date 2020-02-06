@@ -1,6 +1,6 @@
 import React from 'react';
 import NewJobDialog from '../NewJobDialog';
-import { GeneralJobsList } from '../Jobs/GeneralJobsList';
+import GeneralJobsList from '../Jobs/GeneralJobsList';
 
 export const GeneralJobs = props => {
 

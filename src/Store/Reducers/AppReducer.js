@@ -148,6 +148,9 @@ const initialState = {
 }
 //create reducer function
 const userReducer = (state = initialState, action) => {
+
+  console.log('reducer: action', action, 'state', state);
+
   switch (action.type) {
     case FETCH_USERS_START:
       return{
@@ -310,6 +313,9 @@ const userReducer = (state = initialState, action) => {
     case FETCH_MATCH_JS_START:
     case FETCH_MATCH_JS_SUCCESS:
     case FETCH_MATCH_JS_FAILURE:
+
+    default:
+      return state;
   }
 }
 

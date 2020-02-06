@@ -9,9 +9,22 @@ import {
     Route
   } from 'react-router-dom'
 
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+
+import { Provider } from 'react-redux';
+import userReducer from './Store/Reducers/AppReducer';
+
+const store = createStore(
+    userReducer,
+    applyMiddleware(thunk)
+);
+
 ReactDOM.render(
     <Router>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </Router>
     , document.getElementById('root'));
 

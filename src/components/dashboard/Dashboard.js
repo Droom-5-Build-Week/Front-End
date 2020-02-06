@@ -1,20 +1,23 @@
 import React from 'react';
 import { MenuNav } from './MenuNav';
 
-import { SeekerDashboard } from './SeekerDashboard';
+import SeekerDashboard from './SeekerDashboard';
 import { ProviderDashboard } from './ProviderDashboard';
-
-import { connect } from 'react-redux';
 
 import './dashboard.css';
 
 export const Dashboard = props => {
 
+    console.log('dashboard props', props);
+
+    const id = localStorage.getItem('userId');
+    const type = localStorage.getItem('userType');
+
     const renderCorrectUserType = () => {
-        if(props.userType === 'seeker') {
-            return <SeekerDashboard name={props.name} userType='seeker'/>
-        } else if(props.userType === 'provider') {
-            return <ProviderDashboard name={props.name} userType='provider'/>
+        if(type === 'seeker') {
+            return <SeekerDashboard id={id} name={''} userType='seeker'/>
+        } else if(type === 'provider') {
+            return <ProviderDashboard id={id} name={''} userType='provider'/>
         }
     }
 
@@ -26,18 +29,3 @@ export const Dashboard = props => {
         </div>
     )
 }
-
-const mapStateToProps = state => {
-    
-    if(state.userType === 1) {
-        return {
-            name: state.seeker.name
-        }
-    } else {
-        return {
-            name: state.provider.name
-        }
-    }
-}
-
-export default connect(mapStateToProps, {})(Dashboard);

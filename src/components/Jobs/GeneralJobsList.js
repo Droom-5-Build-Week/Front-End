@@ -4,20 +4,22 @@ import { connect } from 'react-redux';
 
 import { getExperiancesForUserById, getAllMatchsForJS, getAllJobsJP} from '../../Store/Actions/AppActions.js';
 
-export const GeneralJobsList = props => {
+const GeneralJobsList = props => {
+
+    console.log('general jobs list props', props);
 
     if(props.type === 'seeker') {
         if(props.jobType === 'matches') {
             // grab all the matches
-            getAllMatchsForJS(props.id);
+            // props.getAllMatchsForJS(props.id);
         } else if(props.jobType === 'experience') {
             //grab all the experience
-            getExperiancesForUserById(props.id);
+            // props.getExperiancesForUserById(props.id);
         }
 
     } else if(props.type === 'provider') {
         // grab the matches and display
-        getAllJobsJP(id);
+        // props.getAllJobsJP(props.id);
     }
 
     const renderCorrectList = () => {
@@ -36,7 +38,7 @@ export const GeneralJobsList = props => {
             }
         } else if(props.type === 'provider') {
             // grab all jobs
-            jpJobs.map(job => {
+            props.jpJobs.map(job => {
                 return <GeneralJob name={job.position_name} position_name={job.type} type='' />
             })
         }

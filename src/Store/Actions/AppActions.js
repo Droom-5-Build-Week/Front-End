@@ -1,5 +1,5 @@
 import axios from 'axios';
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import {axiosWithAuth} from '../../utils/axiosWithAuth';
 
 // user account related
 export const FETCH_USERS_START = "FETCH_USERS_START";
@@ -99,6 +99,10 @@ export const FETCH_MATCH_JS_START = "FETCH_MATCH_JS_START";
 export const FETCH_MATCH_JS_SUCCESS = "FETCH_MATCH_JS_SUCCESS";
 export const FETCH_MATCH_JS_FAILURE = "FETCH_MATCH_JS_FAILURE";
 
+export const FETCH_MATCHS_JP_START = "FETCH_MATCHS_JP_START";
+export const FETCH_MATCHS_JP_SUCCESS = "FETCH_MATCHS_JP_SUCCESS";
+export const FETCH_MATCHS_JP_FAILURE = "FETCH_MATCHS_JP_FAILURE";
+
 const apiURL = 'https://droom-bt-tl.herokuapp.com/api/';
 
 export const getUsers = () => dispatch =>{
@@ -150,12 +154,12 @@ export const getExperiancesForUserById = (uid, id) => dispatch =>{
   .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
 
-export const getExperiancesForUserById = (uid, id) => dispatch =>{
-  dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
-  .then( res => dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
-  .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
-}
+// export const getExperiancesForUserById = (uid, id) => dispatch =>{
+//   dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START});
+//   axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
+//   .then( res => dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
+//   .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
+// }
 
 export const updateExperiancesForUserById = (uid, id) => dispatch =>{
   dispatch({type: UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_START});
