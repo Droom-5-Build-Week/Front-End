@@ -6,12 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 
-const { hide } = cogoToast.success('Success. ', {
-  onClick: () => {
-    hide();
-  }
-})
-
 export default function LoginForm(props) {
 
   const [credentials, setCredentials] = useState({
@@ -45,7 +39,6 @@ export default function LoginForm(props) {
     setState({ ...state, [name]: event.target.checked });
     // console.log(event.target.checked)
     // console.log(Login)
-    
   };
 
   const logInValidation = () => {

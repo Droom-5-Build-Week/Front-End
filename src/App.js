@@ -18,7 +18,7 @@ function App() {
         <Route exact path='/' render={ props => <Dashboard userType='provider' {...props}/> }/>
         <Route exact path='/sign-up-seeker' render={ props => <JobSeekerOnboarding {...props} /> }/>
         <Route exact path='/sign-up-provider' render={ props => <JPSignUp {...props}/> } />
-        <PrivateRoute path='/dashboard' render={props => <Dashboard />} />
+        <PrivateRoute path='/dashboard' component={<Dashboard />} />
       </Switch>
 
     </div>
