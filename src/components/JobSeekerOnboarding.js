@@ -56,10 +56,10 @@ const JobSeekerOnboarding = (props) =>{
           
           <div className="FormContainer">
             
-            <TextField label="Name" name="name" value={userInfo.name} onChange={(e) => handleChanges(e)} />
-            <TextField label="Email" name="email" value={userInfo.email} onChange={(e) => handleChanges(e)} />
-            <TextField label="Address" name="location" value={userInfo.location} onChange={(e) => handleChanges(e)}/>
-            <TextField type="password" label="Password" name="password" value={userInfo.password} onChange={(e) => handleChanges(e)} />
+            <TextField label="Name*" name="name" value={userInfo.name} onChange={(e) => handleChanges(e)} required={true} />
+            <TextField label="Email*" name="email" value={userInfo.email} onChange={(e) => handleChanges(e)} required={true}/>
+            <TextField label="Address*" name="location" value={userInfo.location} onChange={(e) => handleChanges(e)}required={true}/>
+            <TextField type="password*" label="Password" name="password" value={userInfo.password} onChange={(e) => handleChanges(e)} required={true}/>
             <br/>
             <IntrestsDianlog setIntrests = { (obj) => setUserInfo({...userInfo, professionalIntrests: obj.value})} />
             <TextField label="Professional Intrests" name="professionalIntrests" disabled={true} value={userInfo.professionalIntrests} />
