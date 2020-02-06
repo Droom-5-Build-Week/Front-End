@@ -38,12 +38,11 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/' render={ props => <Dashboard userType='provider' {...props}/> }/>
-        <Route exact path='/sign-up-seeker' render={ props => <JobSeekerOnboarding {...props} /> }/>
-        <Route exact path='/sign-up-provider' render={ props => <JPSignUp {...props}/> } />
-        <PrivateRoute path='/dashboard' render={props => <Dashboard />} />
+        <Route exact path='/' component={LoginForm }/>
+        <Route exact path='/sign-up-seeker' component={JobSeekerOnboarding  }/>
+        <Route exact path='/sign-up-provider' component={JPSignUp  } />
+        <PrivateRoute path='/dashboard' component={Dashboard } />
       </Switch>
-
     </div>
   );
 }
