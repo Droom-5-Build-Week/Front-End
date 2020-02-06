@@ -181,3 +181,5 @@ const userReducer = (state = initialState, action) => {
 
 
 //export reducer function
+
+export default userReducer;
