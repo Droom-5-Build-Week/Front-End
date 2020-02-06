@@ -15,12 +15,11 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path='/' component={ <LoginForm /> }/>
-        <Route exact path='/sign-up-seeker' component={ <JobSeekerOnboarding /> }/>
-        <Route exact path='/sign-up-provider' component={ <JPSignUp /> } />
-        <PrivateRoute path='/dashboard' component={ <Dashboard />} />
+        <Route exact path='/' component={LoginForm }/>
+        <Route exact path='/sign-up-seeker' component={JobSeekerOnboarding  }/>
+        <Route exact path='/sign-up-provider' component={JPSignUp  } />
+        <PrivateRoute path='/dashboard' component={Dashboard } />
       </Switch>
-
     </div>
   );
 }

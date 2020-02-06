@@ -90,7 +90,8 @@ import{
 
   FETCH_MATCH_JS_START,
   FETCH_MATCH_JS_SUCCESS,
-  FETCH_MATCH_JS_FAILURE
+  FETCH_MATCH_JS_FAILURE,
+  getAllMatchsForJS
 
 } from '../Actions/AppActions'
 
@@ -98,27 +99,32 @@ import{
 //set up init. state obj.
 
 const initialState = {
-	userType: false,
+  isFetching : false,
+  userType: 1,
+  error: "",
 	seeker: {
-		id: "",
-		experiance: [{
+    id: 0,
+    name:"",
+    email:"",
+    location:"",
+		experiences: [{
 			id: "",
 			company_name: "",
 			job_title: "",
 			user_id: "",
 		}],
 		matched_jobs:[{
-			name: "",
+			name: 0,
 			position_name: "",
 			type: "",
 			job_bio: "",
 			skills: "",
 		}],
-		intrests:"",
-		skills:""
+		personal_intrests:"",
+		personal_skills:""
 	},
 	provider:{
-		id: "",
+		id: 0,
 		name: "",
 		location: "",
 		email: "",
@@ -143,11 +149,67 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USERS_START:
+      return{
+        ...state, 
+        isFetching:true
+      }
     case FETCH_USERS_SUCCESS:
+
+      
     case FETCH_USERS_FAILURE:
+      return{
+        ...state,
+        isFetching: false,
+        error: action.payload
+      }
 
     case FETCH_USER_BY_ID_START:
+      return{
+        ...state, 
+        isFetching:true
+      }
     case FETCH_USER_BY_ID_SUCCESS:
+      // let userTypeObj = {};
+
+      // if(state.userType === 1) {
+      //   userTypeObj = {
+      //     seeker: {
+      //       id: action.payload.id,
+      //       name: action.payload.name,
+      //       personal_interests: action.payload,
+      //       personal_skills: action.payload.person_skills,
+      //       experiences: action.payload.experiences
+      //     },
+      //     provider: {
+
+      //     }
+      //   }
+
+      //   getAllMatchsForJS(id);
+
+      // } else if(userType === 2) {
+      //   userTypeObj = {
+      //     seeker: {
+      //       id: state.seeker.id,
+      //       name: state.seeker.name,
+      //       personal_interests: state.seeker.personal_interests,
+      //       personal_skills: state.seeker.personal_skills,
+      //       experiences: state.seeker.experiences
+      //     },
+      //     provider: {
+
+      //     }
+      //   } 
+      // }
+
+      return {
+        ...state,
+        // isFetching: false,
+        // userType: action.payload.userType,
+        // seeker: userTypeObj.seeker,
+        // provider: userTypeObj.provider
+      }
+
     case FETCH_USER_BY_ID_FAILURE:
 
     case UPDATE_USER_BY_ID_START:
@@ -227,9 +289,23 @@ const userReducer = (state = initialState, action) => {
     case POST_MATCH_FAILURE:
 
     case FETCH_MATCHS_JS_START:
+      return{
+        ...state,
+        isFetching:true
+      }
     case FETCH_MATCHS_JS_SUCCESS:
+      return{
+        ...state,
+        isFetching: false,
+        matches: action.payload
+      }
     case FETCH_MATCHS_JS_FAILURE:
-      
+      return{
+        ...state,
+        isFetching: false,
+        error: action.payload
+      }
+
     case FETCH_MATCH_JS_START:
     case FETCH_MATCH_JS_SUCCESS:
     case FETCH_MATCH_JS_FAILURE:
