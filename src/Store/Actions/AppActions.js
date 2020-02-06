@@ -124,9 +124,9 @@ export const getUsersById = (id) => dispatch =>{
   .catch( err => dispatch({type: FETCH_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
-export const updateUserById = (id) => dispatch =>{
+export const updateUserById = (id, obj) => dispatch =>{
   dispatch({ type: UPDATE_USER_BY_ID_START});
-  axiosWithAuth().put(`https://droom-bt-tl.herokuapp.com/api/users/${id}`)
+  axiosWithAuth().put(`https://droom-bt-tl.herokuapp.com/api/users/${id}`, obj)
   .then( res => dispatch({type: UPDATE_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: UPDATE_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }

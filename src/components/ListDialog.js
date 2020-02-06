@@ -12,13 +12,7 @@ import GeneralList from './GeneralList';
 export default function ListDialog(props) {
   const [open, setOpen] = React.useState(false);
 
-  const initialList = [
-    'Item 1',
-    'Item 2',
-    'Item 3'
-  ] 
-
-  const [list, setList] = React.useState([]);
+  const [list, setList] = React.useState(props.list);
 
   const handleClickOpen = () => {
     //axios
@@ -46,7 +40,7 @@ export default function ListDialog(props) {
         <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
 
-            <GeneralList setList={(arr) => setList(arr)} initialList={initialList}/>
+            <GeneralList setList={(arr) => setList(arr)} initialList={list}/>
             
         </DialogContent>
         <DialogActions>
