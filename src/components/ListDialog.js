@@ -18,7 +18,7 @@ export default function ListDialog(props) {
     'Item 3'
   ] 
 
-  const [list, setList] = React.useState(initialList);
+  const [list, setList] = React.useState([]);
 
   const handleClickOpen = () => {
     //axios

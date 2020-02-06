@@ -104,6 +104,10 @@ export const FETCH_MATCHS_JP_FAILURE = "FETCH_MATCHS_JP_FAILURE"
 export const FETCH_MATCHS_JP_SUCCESS = "FETCH_MATCHS_JP_SUCCESS"
 
 
+export const FETCH_MATCHS_JP_START = "FETCH_MATCHS_JP_START";
+export const FETCH_MATCHS_JP_SUCCESS = "FETCH_MATCHS_JP_SUCCESS";
+export const FETCH_MATCHS_JP_FAILURE = "FETCH_MATCHS_JP_FAILURE";
+
 const apiURL = 'https://droom-bt-tl.herokuapp.com/api/';
 
 export const getUsers = () => dispatch =>{

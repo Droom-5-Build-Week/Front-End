@@ -14,9 +14,8 @@ const GeneralJobs = props => {
     const renderCorrectJobButton = () => {
         if(props.userType === 'provider') {
             return <NewJobDialog />
-        } else if(props.userType === 'seeker') {
+        } else if(props.userType === 'seeker' && props.type === 'experience') {
             return <PrevJobDialog handlePrevJob={addPrevJob} />
-            //<div className='prevJobDialog'>Add Prev Job</div>
         }
     }
 
