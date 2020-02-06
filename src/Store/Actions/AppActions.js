@@ -150,7 +150,7 @@ export const getExperiancesForUserById = (uid, id) => dispatch =>{
   .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
 
-export const getExperiancesForUserById = (uid, id) => dispatch =>{
+export const getExperianceForUserById = (uid, id) => dispatch =>{
   dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START});
   axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))

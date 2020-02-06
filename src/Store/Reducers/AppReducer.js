@@ -102,6 +102,7 @@ import{
 const initialState = {
   isFetching : false,
   isPutting: false,
+  isDeleting: false,
   userType: 1,
   error: "",
 	seeker: {
@@ -271,12 +272,40 @@ const userReducer = (state = initialState, action) => {
     case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
 
     case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_START:
+      return{
+        ...state,
+        isPutting:true,
+      }
     case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:
+      return{
+        ...state,
+        isPutting:false,
+        experiences: actions.payload
+      }
     case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
+      return{
+        ...state,
+        isPutting:false,
+        error: actions.payload
+      }
 
     case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_START:
+      return{
+        ...state,
+        isDeleting: true
+      }
     case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:
+      return{
+        ...state,
+        isDeleting: false,
+        experiences: actions.payload
+      }
     case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
+      return{
+        ...state,
+        isDeleting: false,
+        error: action.payload
+      }
 
     case FETCH_ALL_COMPANIES_START:
     case FETCH_ALL_COMPANIES_SUCCESS:
