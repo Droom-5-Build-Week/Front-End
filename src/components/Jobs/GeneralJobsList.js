@@ -28,24 +28,24 @@ const GeneralJobsList = props => {
 
     const renderCorrectList = () => {
         //here we will return a map of generalJob or match
-        if(props.type === 'seeker') {
-            if(props.jobType === 'matches' && props.jsMatches !== undefined) {
-                // grab all the matches
-                return( props.jsMatches.map( match => {
-                    return <GeneralJob name={match.name} position_name={match.position_name} type={match.type} />
-                }) )
-            } else if(props.jobType === 'experience'  && props.jsExperiences !== undefined) {
-                //grab all the experience
-                return props.jsExperiences.map(ex => {
-                    return <GeneralJob name={ex.company_name} position_name={ex.job_title} type='' />
-                })
-            }
-        } else if(props.type === 'provider' && props.jpJobs !== undefined) {
-            // grab all jobs
-            props.jpJobs.map(job => {
-                return <GeneralJob name={job.position_name} position_name={job.type} type='' />
-            })
-        }
+        // if(props.type === 'seeker') {
+        //     if(props.jobType === 'matches' && props.jsMatches !== undefined) {
+        //         // grab all the matches
+        //         return( props.jsMatches.map( match => {
+        //             return <GeneralJob name={match.name} position_name={match.position_name} type={match.type} />
+        //         }) )
+        //     } else if(props.jobType === 'experience'  && props.jsExperiences !== undefined) {
+        //         //grab all the experience
+        //         return props.jsExperiences.map(ex => {
+        //             return <GeneralJob name={ex.company_name} position_name={ex.job_title} type='' />
+        //         })
+        //     }
+        // } else if(props.type === 'provider' && props.jpJobs !== undefined) {
+        //     // grab all jobs
+        //     props.jpJobs.map(job => {
+        //         return <GeneralJob name={job.position_name} position_name={job.type} type='' />
+        //     })
+        // }
     }
 
     return (
