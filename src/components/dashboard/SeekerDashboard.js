@@ -1,6 +1,7 @@
 import React from 'react';
-import { GeneralJobs } from '../Jobs/GeneralJobs';
+import GeneralJobs from '../Jobs/GeneralJobs';
 import { GeneralListView } from '../Jobs/GeneralListView';
+import PrevJobDialog from '../PreviousJobDialog'
 
 export const SeekerDashboard = props => {
 
@@ -8,6 +9,8 @@ export const SeekerDashboard = props => {
 
     const [interestsList, setInterestsList] = React.useState([]);
     
+
+
     return (
          <div className='seeker-dashboard'>
             <h1>Job Seeker Dashboard for **User**</h1>
@@ -16,6 +19,7 @@ export const SeekerDashboard = props => {
                 <GeneralListView list={interestsList} type='interests' />
             </div>
             <GeneralJobs userType={props.userType}/>
+
         </div>
     )
 }

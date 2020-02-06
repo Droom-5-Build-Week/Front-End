@@ -5,6 +5,7 @@ export const axiosWithAuth =() => {
 
     return axios.create({
         headers: {
+            'baseURL': 'https://droom-bt-tl.herokuapp.com/api/',
             'Content-Type': 'application/json',
             'Authorization': `${token}`,
         },

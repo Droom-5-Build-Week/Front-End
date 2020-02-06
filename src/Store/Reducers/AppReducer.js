@@ -100,8 +100,10 @@ import{
 
 const initialState = {
   isFetching : false,
+  isPutting: false,
   userType: 1,
   error: "",
+  id: 0,
 	seeker: {
     id: 0,
     name:"",

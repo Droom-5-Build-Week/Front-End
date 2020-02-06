@@ -6,12 +6,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import { connect } from 'react-redux';
+import { createExperianceByUserId } from '../Store/Actions/AppActions';
 import SkillsDialog from './SkillsDialog';
-
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { JobType } from './JobType';
 
-export default function PrevJobDialog() {
+const PrevJobDialog = props => {
   const [open, setOpen] = React.useState(false);
 
   const [skills, setSkills] = React.useState({value: ''});
@@ -51,10 +52,23 @@ export default function PrevJobDialog() {
     })
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.addPrevJob(prevJobs)
+    // const userId = localStorage.getItem('userId')
+    // props.createExperianceByUserId(userId, prevJobs)
+    // axiosWithAuth().post(`/users/${userId}/experiences`, prevJobs)
+    //   .then(res => {
+    //     console.log(res)
+    //   })
+
+
+  }
+
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Previous Job
+        Add Previous Job
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth='false' maxWidth='md'>
         <DialogTitle id="form-dialog-title">Complete Your Job History</DialogTitle>
@@ -122,7 +136,7 @@ export default function PrevJobDialog() {
           <Button onClick={() => handleClose(false)} color="primary">
             Cancel
           </Button>
-          <Button onClick={() => handleClose(true)} color="primary">
+          <Button onClick={() => handleClose(true)} onSubmit={handleSubmit} color="primary">
             Add Job
           </Button>
         </DialogActions>
@@ -130,3 +144,5 @@ export default function PrevJobDialog() {
     </div>
   );
 }
+
+export default PrevJobDialog;
