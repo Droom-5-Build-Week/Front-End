@@ -1,18 +1,28 @@
 import React from 'react';
 import GeneralJobs from '../Jobs/GeneralJobs';
 import { GeneralListView } from '../Jobs/GeneralListView';
-import PrevJobDialog from '../PreviousJobDialog'
 
-export const SeekerDashboard = props => {
+import { connect } from 'react-redux';
+
+const SeekerDashboard = props => {
     return (
         <div className='seeker-dashboard'>
             <h1>Job Seeker Dashboard for {props.name}</h1>
             <div className='top-seeker-dashboard'>
-                <GeneralListView list={skillsList} type='skills' />
-                <GeneralListView list={interestsList} type='interests' />
+                <GeneralListView list={props.skills} type='skills' />
+                <GeneralListView list={props.interests} type='interests' />
             </div>
             <GeneralJobs title='Job Matches:' jobType='matches' userType={props.userType}/>
             <GeneralJobs title='Experiences:' jobType='experience' userType={props.userType} />
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        skills: state.seeker.personal_skills,
+        interests: state.seeker.personal_interests
+    }
+}
+
+export default connect(mapStateToProps, {})(SeekerDashboard);
