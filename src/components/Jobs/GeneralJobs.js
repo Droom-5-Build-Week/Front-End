@@ -7,17 +7,17 @@ export const GeneralJobs = props => {
     const renderCorrectJobButton = () => {
         if(props.userType === 'provider') {
             return <NewJobDialog />
-        } else if(props.userType === 'seeker') {
-            return <NewJobDialog /> //<div className='prevJobDialog'>Add Prev Job</div>
+        } else if(props.userType === 'seeker' && props.jobType === 'experience') {
+            return <NewJobDialog /> //Add prev experience
         }
     }
 
     return (
         <div className='general-jobs'>
-            <span>Your Jobs:</span>
+            <span>{props.title}</span>
 
             <div className='general-jobs-list'>
-                <GeneralJobsList />
+                <GeneralJobsList type={props.userType} jobType={props.jobType}/>
             </div>
 
             { renderCorrectJobButton() }

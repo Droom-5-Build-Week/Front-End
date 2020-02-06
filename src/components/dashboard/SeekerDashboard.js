@@ -15,7 +15,8 @@ export const SeekerDashboard = props => {
                 <GeneralListView list={skillsList} type='skills' />
                 <GeneralListView list={interestsList} type='interests' />
             </div>
-            <GeneralJobs userType={props.userType}/>
+            <GeneralJobs jobType='matches' userType={props.userType}/>
+            <GeneralJobs jobType='experience' userType={props.userType} />
         </div>
     )
 }

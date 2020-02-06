@@ -102,6 +102,7 @@ const initialState = {
   isFetching : false,
   userType: 1,
   error: "",
+  id: '',
 	seeker: {
     id: 0,
     name:"",
