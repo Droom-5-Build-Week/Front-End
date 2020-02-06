@@ -106,8 +106,8 @@ const initialState = {
     id: 0,
     name:"",
     email:"",
-    loaction:"",
-		experiances: [{
+    location:"",
+		experiences: [{
 			id: "",
 			company_name: "",
 			job_title: "",
@@ -154,24 +154,8 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USERS_SUCCESS:
-      return {
-        ...state,
-        isFetching: false,
-        userType: action.payload.userType,
-        if (userType = 1){
-          state.seeker.id = action.payload.id;
-          state.seeker.name = action.payload.name;
 
-          state.seeker.personal_intrests = action.payload.personal_intrests;
-          state.seeker.personal_skills = action.payload.personal_skills;
-          state.seeker.experiances = action.payload.experiances;
-          getAllMatchsForJS(id);
-        },
-        if (userType = 2){
-          
-        }
-
-      }
+      
     case FETCH_USERS_FAILURE:
       return{
         ...state,
@@ -185,6 +169,47 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USER_BY_ID_SUCCESS:
+      // let userTypeObj = {};
+
+      // if(state.userType === 1) {
+      //   userTypeObj = {
+      //     seeker: {
+      //       id: action.payload.id,
+      //       name: action.payload.name,
+      //       personal_interests: action.payload,
+      //       personal_skills: action.payload.person_skills,
+      //       experiences: action.payload.experiences
+      //     },
+      //     provider: {
+
+      //     }
+      //   }
+
+      //   getAllMatchsForJS(id);
+
+      // } else if(userType === 2) {
+      //   userTypeObj = {
+      //     seeker: {
+      //       id: state.seeker.id,
+      //       name: state.seeker.name,
+      //       personal_interests: state.seeker.personal_interests,
+      //       personal_skills: state.seeker.personal_skills,
+      //       experiences: state.seeker.experiences
+      //     },
+      //     provider: {
+
+      //     }
+      //   } 
+      // }
+
+      return {
+        ...state,
+        // isFetching: false,
+        // userType: action.payload.userType,
+        // seeker: userTypeObj.seeker,
+        // provider: userTypeObj.provider
+      }
+
     case FETCH_USER_BY_ID_FAILURE:
 
     case UPDATE_USER_BY_ID_START:

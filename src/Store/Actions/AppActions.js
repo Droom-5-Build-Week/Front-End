@@ -110,63 +110,63 @@ export const getUsers = () => dispatch =>{
 
 export const getUsersById = (id) => dispatch =>{
   dispatch({ type: FETCH_USER_BY_ID_START});
-  axiosWithAuth().get(`/users/:${id}`)
+  axiosWithAuth().get(`/users/${id}`)
   .then( res => dispatch({type: FETCH_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: FETCH_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const updateUserById = (id) => dispatch =>{
   dispatch({ type: UPDATE_USER_BY_ID_START});
-  axiosWithAuth().put(`/users/:${id}`)
+  axiosWithAuth().put(`/users/${id}`)
   .then( res => dispatch({type: UPDATE_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: UPDATE_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const deleteUserById = (id) => dispatch =>{
   dispatch({ type: DELETE_USER_BY_ID_START});
-  axiosWithAuth().delete(`/users/:${id}`)
+  axiosWithAuth().delete(`/users/${id}`)
   .then( res => dispatch({type: DELETE_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: DELETE_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const createExperianceByUserId = (id ,data) => dispatch =>{
   dispatch({ type: POST_USER_EXPERIANCE_FOR_USER_BY_ID_START});
-  axiosWithAuth().post(`/users/:${id}/experiences`, data)
+  axiosWithAuth().post(`/users/${id}/experiences`, data)
   .then( res => dispatch({type: POST_USER_EXPERIANCE_FOR_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: POST_USER_EXPERIANCE_FOR_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const getExperiancesForUser = (uid, id) => dispatch =>{
   dispatch({ type: FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/:${id}`)
+  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
   .catch( err => dispatch({type: FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const getExperiancesForUserById = (uid, id) => dispatch =>{
   dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/:${id}`)
+  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
 
 export const getExperiancesForUserById = (uid, id) => dispatch =>{
   dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/:${id}`)
+  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
 
 export const updateExperiancesForUserById = (uid, id) => dispatch =>{
   dispatch({type: UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/:${id}`)
+  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
 
 export const deleteExperiancesForUserById = (uid, id) => dispatch =>{
   dispatch({type: DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_START});
-  axiosWithAuth().get(`/users/${uid}/experiences/:${id}`)
+  axiosWithAuth().get(`/users/${uid}/experiences/${id}`)
   .then( res => dispatch({type: DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE, payload: err.response}))
 }
@@ -180,91 +180,91 @@ export const getAllCompanies = () => dispatch =>{
 
 export const getCompany = (id) => dispatch =>{
   dispatch({type: FETCH_A_COMPANY_BY_ID_START});
-  axiosWithAuth().get(`/companies/:${id}`)
+  axiosWithAuth().get(`/companies/${id}`)
   .then( res => dispatch({type: FETCH_A_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_A_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const updateCompany = (id) => dispatch =>{
   dispatch({type: UPDATE_A_COMPANY_BY_ID_START});
-  axiosWithAuth().put(`/companies/:${id}`)
+  axiosWithAuth().put(`/companies/${id}`)
   .then( res => dispatch({type: UPDATE_A_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: UPDATE_A_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const deleteCompany = (id) => dispatch =>{
   dispatch({type: DELETE_A_COMPANY_BY_ID_START});
-  axiosWithAuth().get(`/companies/:${id}`)
+  axiosWithAuth().get(`/companies/${id}`)
   .then( res => dispatch({type: DELETE_A_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: DELETE_A_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const addJobJP = (id, data) => dispatch =>{
   dispatch({type: POST_JOB_FOR_COMPANY_START});
-  axiosWithAuth().post(`/companies/:${id}/jobs`, data)
+  axiosWithAuth().post(`/companies/${id}/jobs`, data)
   .then( res => dispatch({type: POST_JOB_FOR_COMPANY_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: POST_JOB_FOR_COMPANY_FAILURE, payload: err.response}))
 }
 
 export const getAllJobsJP = (id) => dispatch =>{
   dispatch({type: FETCH_JOBS_FOR_COMPANY_START});
-  axiosWithAuth().get(`/companies/:${id}/jobs`)
+  axiosWithAuth().get(`/companies/${id}/jobs`)
   .then( res => dispatch({type: FETCH_JOBS_FOR_COMPANY_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_JOBS_FOR_COMPANY_FAILURE, payload: err.response}))
 }
 
 export const getJobByIdJP = (cid, id) => dispatch =>{
   dispatch({type: FETCH_JOB_FOR_COMPANY_BY_ID_START});
-  axiosWithAuth().get(`/companies/:${cid}/jobs/:${id}`)
+  axiosWithAuth().get(`/companies/${cid}/jobs/${id}`)
   .then( res => dispatch({type: FETCH_JOB_FOR_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_JOB_FOR_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const updateJobByIdJP = (cid, id) => dispatch =>{
   dispatch({type: UPDATE_JOB_FOR_COMPANY_BY_ID_START});
-  axiosWithAuth().put(`/companies/:${cid}/jobs/:${id}`)
+  axiosWithAuth().put(`/companies/${cid}/jobs/${id}`)
   .then( res => dispatch({type: UPDATE_JOB_FOR_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: UPDATE_JOB_FOR_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const DeleteJobById = (cid, id) => dispatch =>{
   dispatch({type: DELETE_JOB_FOR_COMPANY_BY_ID_START});
-  axiosWithAuth().delete(`/companies/:${cid, id}`)
+  axiosWithAuth().delete(`/companies/${cid, id}`)
   .then( res => dispatch({type: DELETE_JOB_FOR_COMPANY_BY_ID_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: DELETE_JOB_FOR_COMPANY_BY_ID_FAILURE, payload: err.response}))
 }
 
 export const getJobByType = (type) => dispatch =>{
   dispatch({type: FETCH_JOBS_BY_TYPE_START});
-  axiosWithAuth().get(`/jobs/:${type}`)
+  axiosWithAuth().get(`/jobs/${type}`)
   .then( res => dispatch({type: FETCH_JOBS_BY_TYPE_SUCCESS, payload: res.data}))
   .catch(err=> dispatch({type: FETCH_JOBS_BY_TYPE_FAILURE, payload: err.response}))
 }
 
 export const getMatchsForJP = (id) => dispatch =>{
   dispatch({ type: FETCH_MATCHS_JP_START});
-  axiosWithAuth().get(`/companies/:${id}/matches`)
+  axiosWithAuth().get(`/companies/${id}/matches`)
     .then( res => dispatch({type: FETCH_MATCHS_JP_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
     .catch( err => dispatch({type: FETCH_MATCHS_JP_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const CreateMatch = (id) => dispatch =>{
   dispatch({ type: POST_MATCH_START});
-  axiosWithAuth().post(`/users/:${id}/matches`)
+  axiosWithAuth().post(`/users/${id}/matches`)
     .then( res => dispatch({type: POST_MATCH_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
     .catch( err => dispatch({type: POST_MATCH_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const getAllMatchsForJS = (id) => dispatch =>{
   dispatch({ type: FETCH_MATCHS_JS_START});
-  axiosWithAuth().get(`/users/:${id}/matches`)
+  axiosWithAuth().get(`/users/${id}/matches`)
     .then( res => dispatch({type: FETCH_MATCHS_JP_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
     .catch( err => dispatch({type: FETCH_MATCHS_JP_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
 
 export const getMatchForJS = (uid, id) => dispatch =>{
   dispatch({ type: FETCH_MATCH_JS_START});
-  axiosWithAuth(`/users/:${uid}/matches/:${id}`)
+  axiosWithAuth(`/users/${uid}/matches/${id}`)
     .then( res => dispatch({type: FETCH_MATCH_JP_SUCCESS, payload: res.data})) // needs to be updated based on the info sent back.
     .catch( err => dispatch({type: FETCH_MATCH_JP_FAILURE, payload: err.response})) // needs to be updated based on the info sent back.
 }
