@@ -60,4 +60,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getExperiancesForUserById, getAllMatchsForJS, getAllJobsJP})
+export default connect(mapStateToProps, { getExperiancesForUserById, getAllMatchsForJS, getAllJobsJP})(GeneralJobsList)
