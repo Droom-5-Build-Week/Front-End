@@ -22,10 +22,10 @@ const GeneralJobs = props => {
 
     return (
         <div className='general-jobs'>
-            <span>Your Jobs:</span>
+            <span>{props.title}</span>
 
             <div className='general-jobs-list'>
-                <GeneralJobsList />
+                <GeneralJobsList type={props.userType} jobType={props.jobType}/>
             </div>
 
             { renderCorrectJobButton() }

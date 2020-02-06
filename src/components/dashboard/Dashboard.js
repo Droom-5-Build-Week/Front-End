@@ -4,6 +4,8 @@ import { MenuNav } from './MenuNav';
 import { SeekerDashboard } from './SeekerDashboard';
 import { ProviderDashboard } from './ProviderDashboard';
 
+import { connect } from 'react-redux';
+
 import './dashboard.css';
 
 export const Dashboard = props => {
@@ -27,3 +29,18 @@ export const Dashboard = props => {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    
+    if(state.userType === 1) {
+        return {
+            name: state.seeker.name
+        }
+    } else {
+        return {
+            name: state.provider.name
+        }
+    }
+}
+
+export default connect(mapStateToProps, {})(Dashboard);
