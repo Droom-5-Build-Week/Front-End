@@ -91,6 +91,7 @@ import{
   FETCH_MATCH_JS_START,
   FETCH_MATCH_JS_SUCCESS,
   FETCH_MATCH_JS_FAILURE,
+
   getAllMatchsForJS
 
 } from '../Actions/AppActions'
@@ -100,6 +101,7 @@ import{
 
 const initialState = {
   isFetching : false,
+  isPutting: false,
   userType: 1,
   error: "",
 	seeker: {
@@ -107,6 +109,8 @@ const initialState = {
     name:"",
     email:"",
     location:"",
+		personal_intrests:"",
+		personal_skills:"",
 		experiences: [{
 			id: "",
 			company_name: "",
@@ -120,8 +124,7 @@ const initialState = {
 			job_bio: "",
 			skills: "",
 		}],
-		personal_intrests:"",
-		personal_skills:""
+
 	},
 	provider:{
 		id: 0,
@@ -169,38 +172,42 @@ const userReducer = (state = initialState, action) => {
         isFetching:true
       }
     case FETCH_USER_BY_ID_SUCCESS:
-      // let userTypeObj = {};
+      let userTypeObj = {};
 
-      // if(state.userType === 1) {
-      //   userTypeObj = {
-      //     seeker: {
-      //       id: action.payload.id,
-      //       name: action.payload.name,
-      //       personal_interests: action.payload,
-      //       personal_skills: action.payload.person_skills,
-      //       experiences: action.payload.experiences
-      //     },
-      //     provider: {
+      if(state.userType === 1) {
+        userTypeObj = {
+        seeker: {
+          id: action.payload.id,
+          name: action.payload.name,
+          personal_interests: action.payload,
+          personal_skills: action.payload.person_skills,
+          experiences: action.payload.experiences
+          },
+        provider: {
 
-      //     }
-      //   }
+          }
+        }
 
-      //   getAllMatchsForJS(id);
+        getAllMatchsForJS(id);
 
-      // } else if(userType === 2) {
-      //   userTypeObj = {
-      //     seeker: {
-      //       id: state.seeker.id,
-      //       name: state.seeker.name,
-      //       personal_interests: state.seeker.personal_interests,
-      //       personal_skills: state.seeker.personal_skills,
-      //       experiences: state.seeker.experiences
-      //     },
-      //     provider: {
-
-      //     }
-      //   } 
-      // }
+      } else if(userType === 2) {
+        userTypeObj = {
+          seeker: {
+            id: "",
+            name: "",
+            personal_interests: "",
+            personal_skills: "",
+            experiences: []
+            },
+          provider: {
+            id: state.provider.id,
+            name: state.provider.name,
+            location: state.provider.location,
+            email: state.provider.email,
+            jobs: state.provider.jobs
+          }
+        } 
+      }
 
       return {
         ...state,
@@ -221,12 +228,43 @@ const userReducer = (state = initialState, action) => {
     case DELETE_USER_BY_ID_FAILURE:
 
     case POST_USER_EXPERIANCE_FOR_USER_BY_ID_START:
+      return{
+        ...state,
+        isPutting: true
+      }
     case POST_USER_EXPERIANCE_FOR_USER_BY_ID_SUCCESS:
+      userobj = {...state, seekers:{...experiences ,experiences: action.payload}};
+      return{
+        ...state,
+        isPutting:false,
+        state: userobj
+      }
+
     case POST_USER_EXPERIANCE_FOR_USER_BY_ID_FAILURE:
+      return{
+        ...state,
+        isPutting:false,
+        error: action.payload
+      }
 
     case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_START:
+      return{
+        ...state,
+        isFetching:true
+      }
     case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_SUCCESS:
+      const userobject = {...state, seeker:action.payload}
+      return{
+        ...state,
+        isFetching:false,
+        state: userobject
+      }
     case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_FAILURE:
+      return{
+        ...state,
+        isFetching:false,
+        error = action.payload
+      }
 
     case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START:
     case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:

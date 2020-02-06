@@ -37,27 +37,6 @@
   }
 }
 
-<<<<<<< HEAD
-.jp-popup {
-  /* min-width: 450px; */
-  max-width: 500px;
-  padding-bottom: 25px;
-
-  margin: 0 auto;
-  vertical-align: middle;
-
-  margin-top: 50px;
-}
-
-h2, h3 {
-  color: #a6a6a6;
-}
-
-.MuiDialogContent-root {
-  display: flex;
-  flex-direction: column;
-}
-=======
 .register-account {
   text-decoration: underline;
 }
@@ -65,4 +44,3 @@ h2, h3 {
 .register-account:hover {
   color: #c4c4c4;
 }
->>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb

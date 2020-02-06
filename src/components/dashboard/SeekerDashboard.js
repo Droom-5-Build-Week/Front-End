@@ -1,6 +1,7 @@
 import React from 'react';
 import { GeneralJobs } from '../Jobs/GeneralJobs';
 import { GeneralListView } from '../Jobs/GeneralListView';
+import {PrevJobDialog} from "../"
 
 export const SeekerDashboard = props => {
 

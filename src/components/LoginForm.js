@@ -106,7 +106,7 @@ export default function LoginForm(props) {
         <h1> Seeker Login </h1>
 
         <form onSubmit={handleLoginSubmit}>
-          <div controlId="email">
+          <div controlid="email">
             <label> Email </label>
             <br />
             <TextField
@@ -118,7 +118,7 @@ export default function LoginForm(props) {
               onChange={handleCredentials}
             />
           </div>
-          <div controlId="password">
+          <div controlid="password">
             <label> Password </label>
             <br />
             <TextField
@@ -150,7 +150,7 @@ export default function LoginForm(props) {
         <h1> Recruiter Login</h1>
 
         <form onSubmit={handleLoginSubmit}>
-          <div controlId="email">
+          <div controlid="email">
             <label> Email </label>
             <br />
             <TextField
@@ -162,7 +162,7 @@ export default function LoginForm(props) {
               onChange={handleCredentials}
             />
           </div>
-          <div controlId="password">
+          <div controlid="password">
             <label> Password </label>
             <br />
             <TextField

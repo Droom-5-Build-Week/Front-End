@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import LoginForm from './components/LoginForm';
-import JobSeekerOnboarding from './components/JobSeekerOnboarding';
-import { JPSignUp } from './components/JPSignUp';
-import { Dashboard } from './components/dashboard/Dashboard';
+import LoginForm from './Components/LoginForm';
+import JobSeekerOnboarding from './Components/JobSeekerOnboarding';
+import { JPSignUp } from './Components/JPSignUp';
+import { Dashboard } from './Components/dashboard/Dashboard';
 
 import {Route, Switch} from 'react-router-dom';
 
@@ -41,7 +41,7 @@ function App() {
         <Route exact path='/' component={LoginForm }/>
         <Route exact path='/sign-up-seeker' component={JobSeekerOnboarding  }/>
         <Route exact path='/sign-up-provider' component={JPSignUp  } />
-        <PrivateRoute path='/dashboard' component={Dashboard } />
+        <PrivateRoute path='/dashboard' component={Dashboard  } />
       </Switch>
     </div>
   );

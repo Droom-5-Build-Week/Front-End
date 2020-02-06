@@ -8,10 +8,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import SkillsList from './SkillsList';
-<<<<<<< HEAD
-=======
 import './SkillsDialog.css'
->>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
 
 export default function SkillsDialog(props) {
   const [open, setOpen] = React.useState(false);
@@ -46,11 +43,7 @@ export default function SkillsDialog(props) {
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Add Skills
       </Button>
-<<<<<<< HEAD
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth={false} maxWidth='sm'>
-=======
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth='false' maxWidth='sm'>
->>>>>>> 832a49f2290ceb99afacab15f46e3251d8716dcb
         <DialogTitle id="form-dialog-title">Select Skills</DialogTitle>
         <DialogContent>
           {/* <DialogContentText>
