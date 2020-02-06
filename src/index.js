@@ -5,9 +5,19 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {
-    BrowserRouter as Router,
-    Route
-  } from 'react-router-dom'
+    BrowserRouter as Router
+} from 'react-router-dom'
+
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+
+import { Provider } from 'react-redux';
+import userReducer from './Store/Reducers/AppReducer';
+
+const store = createStore(
+    reducer,
+    applyMiddleware(thunk)
+);
 
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
@@ -22,7 +32,11 @@ const store = createStore(
 
 ReactDOM.render(
     <Router>
+<<<<<<< HEAD
         <Provider store={store}>
+=======
+        <Provider store={store} >
+>>>>>>> 65501e9f315b84d970f4a46e0bd8716782a71683
             <App />
         </Provider>
     </Router>
