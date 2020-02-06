@@ -8,16 +8,15 @@ import { Dashboard } from './components/dashboard/Dashboard';
 
 import {Route, Switch} from 'react-router-dom';
 
-import PrivateRoute from './utils/PrivateRoute';
-
+import { PrivateRoute } from './utils/PrivateRoute';
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path='/' component={LoginForm }/>
-        <Route exact path='/sign-up-seeker' component={JobSeekerOnboarding  }/>
-        <Route exact path='/sign-up-provider' component={JPSignUp  } />
+        <Route path='/sign-up-seeker' component={JobSeekerOnboarding  }/>
+        <Route path='/sign-up-provider' component={JPSignUp  } />
         <PrivateRoute path='/dashboard' component={Dashboard } />
       </Switch>
     </div>
