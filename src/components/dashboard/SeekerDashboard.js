@@ -9,7 +9,7 @@ export const SeekerDashboard = props => {
     const [interestsList, setInterestsList] = React.useState([]);
     
     return (
-        <div className='seeker-dashboard'>
++        <div className='seeker-dashboard'>
             <h1>Job Seeker Dashboard for **User**</h1>
             <div className='top-seeker-dashboard'>
                 <GeneralListView list={skillsList} type='skills' />
