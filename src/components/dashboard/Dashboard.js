@@ -48,7 +48,8 @@ const Dashboard = props => {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleClose = type => {
+    const handleClose = (evt,type) => {
+        evt.preventDefault();
         if(type === 'update') {
             //update user information
             console.log('update user info', userInfo)
@@ -101,22 +102,22 @@ const Dashboard = props => {
                     value={userInfo.name} 
                     onChange={(evt) => handleChange(evt)} />
 
-                <TextField 
+                {/* <TextField 
                     label='Email' 
                     type='text' 
                     name='email'
                     value={userInfo.email} 
-                    onChange={(evt) => handleChange(evt)} />
+                    onChange={(evt) => handleChange(evt)} /> */}
 
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => handleClose('update')} color="primary">
+                <Button onClick={(evt) => handleClose(evt,'update')} color="primary">
                 Update
                 </Button>
-                <Button onClick={() => handleClose('delete')} color="primary">
+                <Button onClick={(evt) => handleClose(evt,'delete')} color="primary">
                 Delete
                 </Button>
-                <Button onClick={() => handleClose('')} color="primary">
+                <Button onClick={(evt) => handleClose(evt,'')} color="primary">
                 Close
                 </Button>
             </DialogActions>
@@ -127,6 +128,16 @@ const Dashboard = props => {
 }
 
 const mapStateToProps = state => {
+    console.log('what is state', state);
+
+    if(state === undefined) {
+        return {
+            userInfoGot: false,
+            userType: 1,
+            seeker: {},
+            provider:{}
+        }
+    }
     return {
         userInfoGot: state.userInfoGot,
         userType: state.userType,

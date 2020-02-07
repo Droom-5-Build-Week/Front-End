@@ -1,98 +1,14 @@
 //import actions
 import{
-  FETCH_USERS_START,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
-
-  FETCH_USER_BY_ID_START,
-  FETCH_USER_BY_ID_SUCCESS,
-  FETCH_USER_BY_ID_FAILURE,
-
-  UPDATE_USER_BY_ID_START,
-  UPDATE_USER_BY_ID_SUCCESS,
-  UPDATE_USER_BY_ID_FAILURE,
-
-  DELETE_USER_BY_ID_START,
-  DELETE_USER_BY_ID_SUCCESS,
-  DELETE_USER_BY_ID_FAILURE,
-
-  POST_USER_EXPERIANCE_FOR_USER_BY_ID_START,
-  POST_USER_EXPERIANCE_FOR_USER_BY_ID_SUCCESS,
-  POST_USER_EXPERIANCE_FOR_USER_BY_ID_FAILURE,
-
-  FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_START,
-  FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_SUCCESS,
-  FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_FAILURE,
-
-  FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START,
-  FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS,
-  FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE,
-
-  UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_START,
-  UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS,
-  UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE,
-
-  DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_START,
-  DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS,
-  DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE,
-
-  FETCH_ALL_COMPANIES_START,
-  FETCH_ALL_COMPANIES_SUCCESS,
-  FETCH_ALL_COMPANIES_FAILURE,
-
-  FETCH_A_COMPANY_BY_ID_START,
-  FETCH_A_COMPANY_BY_ID_SUCCESS,
-  FETCH_A_COMPANY_BY_ID_FAILURE,
-
-  UPDATE_A_COMPANY_BY_ID_START,
-  UPDATE_A_COMPANY_BY_ID_SUCCESS,
-  UPDATE_A_COMPANY_BY_ID_FAILURE,
-
-  DELETE_A_COMPANY_BY_ID_START,
-  DELETE_A_COMPANY_BY_ID_SUCCESS,
-  DELETE_A_COMPANY_BY_ID_FAILURE,
-
-  POST_JOB_FOR_COMPANY_START,
-  POST_JOB_FOR_COMPANY_SUCCESS,
-  POST_JOB_FOR_COMPANY_FAILURE,
-
-  FETCH_JOBS_FOR_COMPANY_START,
-  FETCH_JOBS_FOR_COMPANY_SUCCESS,
-  FETCH_JOBS_FOR_COMPANY_FAILURE,
-
-  FETCH_JOB_FOR_COMPANY_BY_ID_START,
-  FETCH_JOB_FOR_COMPANY_BY_ID_SUCCESS,
-  FETCH_JOB_FOR_COMPANY_BY_ID_FAILURE,
-
-  UPDATE_JOB_FOR_COMPANY_BY_ID_START,
-  UPDATE_JOB_FOR_COMPANY_BY_ID_SUCCESS,
-  UPDATE_JOB_FOR_COMPANY_BY_ID_FAILURE,
-
-  DELETE_JOB_FOR_COMPANY_BY_ID_START,
-  DELETE_JOB_FOR_COMPANY_BY_ID_SUCCESS,
-  DELETE_JOB_FOR_COMPANY_BY_ID_FAILURE,
-
-  FETCH_JOBS_BY_TYPE_START,
-  FETCH_JOBS_BY_TYPE_SUCCESS,
-  FETCH_JOBS_BY_TYPE_FAILURE,
-
-  FETCH_MATCH_JP_START,
-  FETCH_MATCH_JP_SUCCESS,
-  FETCH_MATCH_JP_FAILURE,
-
-  POST_MATCH_START,
-  POST_MATCH_SUCCESS,
-  POST_MATCH_FAILURE,
-
-  FETCH_MATCHS_JS_START,
-  FETCH_MATCHS_JS_SUCCESS,
-  FETCH_MATCHS_JS_FAILURE,
-
-  FETCH_MATCH_JS_START,
-  FETCH_MATCH_JS_SUCCESS,
-  FETCH_MATCH_JS_FAILURE,
-  getAllMatchsForJS
-
+  GETTING_USER,
+  GOT_USER,
+  GETTING_USER_FAIL,
+  UPDATING_USER,
+  UPDATED_USER,
+  UPDATING_USER_FAIL,
+  DELETING_USER,
+  DELETED_USER,
+  DELETING_USER_FAIL
 } from '../Actions/AppActions'
 
 
@@ -146,194 +62,77 @@ const initialState = {
 			type: "",
 		}]
 	}
-	
 }
-//create reducer function
+
+
 const userReducer = (state = initialState, action) => {
 
-  if(action.type.includes("SUCCESS") || action.type.includes("FAILURE")) {
-    console.log('reducer: action', action, 'state', state)
-  }
+  console.log('reducer: action', action, 'state', state)
 
   switch (action.type) {
-    case FETCH_USERS_START:
-      return{
+
+    // -------------Getting -----------------------------
+    case GETTING_USER:
+      console.log('getting user');
+      return {...state, isFetching: true}
+
+    case GOT_USER:
+      console.log('got user');
+      return {
         ...state, 
-        isFetching:true
-      }
-    case FETCH_USERS_SUCCESS:
-
-      
-    case FETCH_USERS_FAILURE:
-      return{
-        ...state,
-        isFetching: false,
-        error: action.payload
-      }
-
-    case FETCH_USER_BY_ID_START:
-      return{
-        ...state, 
-        isFetching:true,
-        id: action.payload
-      }
-    case FETCH_USER_BY_ID_SUCCESS:
-      console.log(action);
-
-      const obj = {
-        ...state,
         userInfoGot: !state.userInfoGot,
-        isFetching: false,
-        id: action.payload.id,
+        id: action.payload.id, 
         seeker: {
           ...state.seeker,
+          id: action.payload.id,
           name: action.payload.name,
           email: action.payload.email,
-          location: action.payload.location,
-          personal_skills: action.payload.personal_skills,
-          personal_interests: action.payload.personal_interests,
-          experiences: action.payload.experiences
+          location: action.payload.location
         }
       }
 
-      return obj;
+    case GETTING_USER_FAIL:
+      console.log('get user failed');
+      return state;
 
-    case FETCH_USER_BY_ID_FAILURE:
+      // -------------updating -----------------------------
 
-    case UPDATE_USER_BY_ID_START:
-    case UPDATE_USER_BY_ID_SUCCESS:
-      const obj = {
-        ...state,
-        userInfoGot: !state.userInfoGot,
-        isFetching: false,
-        id: action.payload.id,
-        seeker: {
-          ...state.seeker,
-          name: action.payload.name,
-          email: action.payload.email,
-          location: action.payload.location,
-          personal_skills: action.payload.personal_skills,
-          personal_interests: action.payload.personal_interests,
-          experiences: action.payload.experiences
-        }
-      }
+    case UPDATING_USER:
+      console.log('updating user');
+      return state;
 
-      return obj;
-    case UPDATE_USER_BY_ID_FAILURE:
-
-    case DELETE_USER_BY_ID_START:
-    case DELETE_USER_BY_ID_SUCCESS:
-      return initialState;
-      
-    case DELETE_USER_BY_ID_FAILURE:
-
-    case POST_USER_EXPERIANCE_FOR_USER_BY_ID_START:
-    case POST_USER_EXPERIANCE_FOR_USER_BY_ID_SUCCESS:
-    case POST_USER_EXPERIANCE_FOR_USER_BY_ID_FAILURE:
-
-    case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_START:
-    case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_SUCCESS:
-      //action.payload
+    case UPDATED_USER:
+      console.log('user updated');
       return {
         ...state,
+        userInfoGot: !state.userInfoGot,
         seeker: {
           ...state.seeker,
-          experiences: action.payload
+          name: action.payload.name
         }
       }
-    case FETCH_USER_EXPERIANCES_FOR_USER_BY_ID_FAILURE:
 
-    case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_START:
-    case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:
-    case FETCH_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
+    case UPDATING_USER_FAIL:
+      console.log('updating user fail');
+      return state;
 
-    case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_START:
-    case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:
-    case UPDATE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
+      // -------------deleting -----------------------------
 
-    case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_START:
-    case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_SUCCESS:
-    case DELETE_USER_EXPERIANCE_FOR_USER_BY_EID_FAILURE:
+    case DELETING_USER:
+      console.log('deleteing a user');
+      return state;
 
-    case FETCH_ALL_COMPANIES_START:
-    case FETCH_ALL_COMPANIES_SUCCESS:
-    case FETCH_ALL_COMPANIES_FAILURE:
+    case DELETED_USER:
+      console.log('user deleted');
+      return state;
 
-    case FETCH_A_COMPANY_BY_ID_START:
-    case FETCH_A_COMPANY_BY_ID_SUCCESS:
-    case FETCH_A_COMPANY_BY_ID_FAILURE:
-
-    case UPDATE_A_COMPANY_BY_ID_START:
-    case UPDATE_A_COMPANY_BY_ID_SUCCESS:
-    case UPDATE_A_COMPANY_BY_ID_FAILURE:
-
-    case DELETE_A_COMPANY_BY_ID_START:
-    case DELETE_A_COMPANY_BY_ID_SUCCESS:
-    case DELETE_A_COMPANY_BY_ID_FAILURE:
-
-    case POST_JOB_FOR_COMPANY_START:
-    case POST_JOB_FOR_COMPANY_SUCCESS:
-    case POST_JOB_FOR_COMPANY_FAILURE:
-
-    case FETCH_JOBS_FOR_COMPANY_START:
-    case FETCH_JOBS_FOR_COMPANY_SUCCESS:
-    case FETCH_JOBS_FOR_COMPANY_FAILURE:
-
-    case FETCH_JOB_FOR_COMPANY_BY_ID_START:
-    case FETCH_JOB_FOR_COMPANY_BY_ID_SUCCESS:
-    case FETCH_JOB_FOR_COMPANY_BY_ID_FAILURE:
-
-    case UPDATE_JOB_FOR_COMPANY_BY_ID_START:
-    case UPDATE_JOB_FOR_COMPANY_BY_ID_SUCCESS:
-    case UPDATE_JOB_FOR_COMPANY_BY_ID_FAILURE:
-
-    case DELETE_JOB_FOR_COMPANY_BY_ID_START:
-    case DELETE_JOB_FOR_COMPANY_BY_ID_SUCCESS:
-    case DELETE_JOB_FOR_COMPANY_BY_ID_FAILURE:
-
-    case FETCH_JOBS_BY_TYPE_START:
-    case FETCH_JOBS_BY_TYPE_SUCCESS:
-    case FETCH_JOBS_BY_TYPE_FAILURE:
-
-    case FETCH_MATCH_JP_START:
-    case FETCH_MATCH_JP_SUCCESS:
-    case FETCH_MATCH_JP_FAILURE:
-
-    case POST_MATCH_START:
-    case POST_MATCH_SUCCESS:
-    case POST_MATCH_FAILURE:
-
-    case FETCH_MATCHS_JS_START:
-      return{
-        ...state,
-        isFetching:true
-      }
-    case FETCH_MATCHS_JS_SUCCESS:
-      return{
-        ...state,
-        isFetching: false,
-        seeker: {
-          ...state.seeker,
-          matched_jobs: action.payload
-        }
-      }
-    case FETCH_MATCHS_JS_FAILURE:
-      return{
-        ...state,
-        isFetching: false,
-        error: action.payload
-      }
-
-    case FETCH_MATCH_JS_START:
-    case FETCH_MATCH_JS_SUCCESS:
-    case FETCH_MATCH_JS_FAILURE:
+    case DELETING_USER_FAIL:
+      console.log('deleting user fail');
+      return state;
 
     default:
       return state;
   }
 }
-
-
-//export reducer function
 
 export default userReducer;
