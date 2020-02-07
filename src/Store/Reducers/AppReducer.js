@@ -99,6 +99,7 @@ import{
 //set up init. state obj.
 
 const initialState = {
+  userInfoGot: false,
   isFetching : false,
   isPutting: false,
   userType: 1,
@@ -177,10 +178,11 @@ const userReducer = (state = initialState, action) => {
         id: action.payload
       }
     case FETCH_USER_BY_ID_SUCCESS:
-      // console.log(action);
+      console.log(action);
 
       const obj = {
         ...state,
+        userInfoGot: !state.userInfoGot,
         isFetching: false,
         id: action.payload.id,
         seeker: {
@@ -200,10 +202,29 @@ const userReducer = (state = initialState, action) => {
 
     case UPDATE_USER_BY_ID_START:
     case UPDATE_USER_BY_ID_SUCCESS:
+      const obj = {
+        ...state,
+        userInfoGot: !state.userInfoGot,
+        isFetching: false,
+        id: action.payload.id,
+        seeker: {
+          ...state.seeker,
+          name: action.payload.name,
+          email: action.payload.email,
+          location: action.payload.location,
+          personal_skills: action.payload.personal_skills,
+          personal_interests: action.payload.personal_interests,
+          experiences: action.payload.experiences
+        }
+      }
+
+      return obj;
     case UPDATE_USER_BY_ID_FAILURE:
 
     case DELETE_USER_BY_ID_START:
     case DELETE_USER_BY_ID_SUCCESS:
+      return initialState;
+      
     case DELETE_USER_BY_ID_FAILURE:
 
     case POST_USER_EXPERIANCE_FOR_USER_BY_ID_START:

@@ -11,14 +11,17 @@ export const SlideMenu = props => {
 
     return (
         <div className={classes}>
-            <div className='slide-menu-item' onClick={props.routeTo('Jobs')}>
+            <div className='slide-menu-item' onClick={() => props.routeTo('Jobs')}>
                 Jobs
             </div>
-            <div className='slide-menu-item' onClick={props.routeTo('Swipe')}>
+            <div className='slide-menu-item' onClick={() => props.routeTo('Swipe')}>
                 Swipe
             </div>
-            <div className='slide-menu-item' onClick={props.routeTo('Matches')}>
+            <div className='slide-menu-item' onClick={() => props.routeTo('Matches')}>
                 Matches
+            </div>
+            <div className='slide-menu-item' onClick={() => props.routeTo('Settings')}>
+                Settings
             </div>
         </div>
     )

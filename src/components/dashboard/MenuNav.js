@@ -10,8 +10,11 @@ export const MenuNav = props => {
 
     const [isVisible, setVisible] = React.useState(false);
 
-    function routeTo(loc) {
-        // props.history.push('/'+ loc)
+    const routeTo = loc => {
+        if(loc === 'Settings') {
+            console.log('displayUserSettings nav', loc)
+            props.displayUserSettings();
+        }
     }
 
     const renderCorrectIcon = () => {

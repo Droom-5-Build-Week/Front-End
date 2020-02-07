@@ -24,7 +24,6 @@ const SeekerDashboard = props => {
 const mapStateToProps = state => {
     // console.log('seekerDashboard', state);
     return {
-        name: state.seeker.name,
         skills: state.seeker.personal_skills,
         interests: state.seeker.personal_interests
     }
